@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <!--меню-->
+    <div class="wrap">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+               
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            @{
+                                if (User.IsInRole("Administrator"))
+                                {
+                                    <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                                                                        <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-object-align-right"></span> Каталог</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart"></span> Управление Товаром <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a asp-action="Index" asp-controller="Sections"><span class="glyphicon glyphicon-th-large"></span> Разделы</a></li>
+                                            <li><a asp-action="Index" asp-controller="SubSections"><span class="glyphicon glyphicon-th"></span> Подразделы</a></li>
+                                            <li><a asp-action="Index" asp-controller="Catalogs"><span class="glyphicon glyphicon-th-list"></span> Каталоги</a></li>
+                                            <li><a asp-action="Index" asp-controller="Products"><span class="glyphicon glyphicon-object-align-right"></span> Товары</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger"></span> Управление Пользователями <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a asp-action="Index" asp-controller="Users"><span class="glyphicon glyphicon-user"></span> Пользователи</a></li>
+                                            <li><a asp-action="Index" asp-controller="Roles"><span class="glyphicon glyphicon-sunglasses"></span> Роли</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span> Полимеры <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a asp-action="Index" asp-controller="Currencies"><span class="glyphicon glyphicon-piggy-bank"></span> Валюты</a></li>
+                                            <li><a asp-action="Index" asp-controller="Units"><span class="glyphicon glyphicon-apple"></span> Единицы</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Личный Кабинет <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a asp-action="Logout" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Выйти [Администратор: @User.Identity.Name]</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                else if (User.IsInRole("Employee"))
+                                {
+                                    <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                                    <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-object-align-right"></span> Каталог</a></li>
+                                    <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                                    <li><a asp-action="Logout" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Выйти [Сотрудник: @User.Identity.Name]</a></li>
+                                }
+                                else if (User.IsInRole("Customer"))
+                                {
+                                    <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                                    <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-object-align-right"></span> Каталог</a></li>
+                                    <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                                    <li><a asp-action="Logout" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Выйти [Клиент: @User.Identity.Name]</a></li>
+                                }
+
+                                else
+                                {
+                                    <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                                    <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-object-align-right"></span> Каталог</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-off"></span>  eCore <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a asp-action="Index" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Войти</a></li>
+                                            <li><a asp-action="Registration" asp-controller="Login"><span class="glyphicon glyphicon-check"></span> Зарегистрироваться</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+            </div>
+        </nav>
+
+            @{ if (ViewBag.IsHomePage == "true")
+                {
+                    <!--BEGIN HEADER------------------------------------------------------------------------->
+                    <br />
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="row">
+                                <div class="col-md-2"></div>
+                                    <div class="col-md-10"><br />
+                                        <div class="well block">                                          
+                                            <img src="~/images/logo.png">
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-5">
+                                        <p><h4 style="font-size: 25px"> <b>Продажа</b> и <b>ремонт</b> оборудования для лесопильной промышленности</h4></p>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <p><h4> Бесплатная консультация:</h4></p>
+                                        
+                                        <p><h4> +7(111)111-11-11</h4></p>
+                                        <a href="#" class="btn btn-primary btn-lg">Заказать звонок</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!--END HEADER------------------------------------------------------------------------->
+                    <hr />
+                     <!--BEGIN CAROUSEL------------------------------------------------------------------------->
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <img src="~/images/02.jpg" alt="#">
+                                <div class="carousel-caption">
+                                    <p><h1><b class="carousel-text">Лесопильное оборудование</b></h1></p>
+                                    <p><h3 class="carousel-text">Мы поставляем только лучшее Лесопильное оборудование, провереннное временем и работой. Товары европейских фирм-производителей также в наличии!</h3></p>
+                                    
+                                
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="~/images/03.jpg" alt="#">
+                                <div class="carousel-caption">
+                                    <p><h1><b class="carousel-text">Ленточные пилы по дереву</b></h1></p>
+                                    <p><h3 class="carousel-text">Ленточные пилы, которые можно у нас купить в Уфе и Белорецке, представляют собой замкнутую гибкую стальную ленту, сваренную в кольцо, с зубьями по одному из краев.</h3></p>
+                                    
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="~/images/04.jpg" alt="#">
+                                <div class="carousel-caption">
+                                    <p><h1><b  class="carousel-text">Сварка и ремонт ленточных пил на BAS - 065</b></h1></p>
+                                    <p><h3  class="carousel-text">Качественный ремонт. Надежный сварной шов. Быстрый срок исполнения заказа. На своем автомобиле забираем и привозим. Бесплатные консультации по эксплуатации ленточных пил.</h3></p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <!--END CAROUSEL------------------------------------------------------------------------->
+                    <hr />
+                    <!--FIRST JUMBOTRON---------------------------------------------------------------------->
+                    <div class="container">
+
+                            <div class="jumbotron first">
+                                <p><h1><b>Наши преимущества</b></h1></p>
+                                <hr />
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img class="three-columns" src="~/images/three-columns/1.jpg" alt="Image">
+                                            <hr />
+                                            <p><b>Большой опыт поставок ленточнопильного инструмента и оборудования для самых разных отраслей промышленности</b></p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <img class="three-columns" src="~/images/three-columns/2.png" alt="Image">
+                                            <hr />
+                                            <p><b>Собственный цех по ремонту и заточке режущего инструмента укомплектован лучшим импортным оборудованием</b></p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <img class="three-columns" src="~/images/three-columns/3.jpg" alt="Image">
+                                            <hr />
+                                            <p><b>Высокое качество предоставляемых услуг и выполнение заказов любой сложности за минимальные сроки</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                       
+                    </div>
+                   <hr/>
+                   <!-- END FIRST JUMBOTRON---------------------------------------------------------------------->
+
+                    <!-- BEGIN SECOND JUMBOTRON---------------------------------------------------------------------->
+                <div class="container">
+                        <div class="jumbotron second">
+                            <p><h1><b>Что вы получите сотрудничая с нами?</b></h1></p>
+                            <hr />
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img  class="three-columns" src="~/images/Second-three-columns/1.jpg" alt="Image">
+                                        <hr />
+                                        <p><b>Исполним ваш заказ в течении<em class="important-text"> 3-5 рабочих</em> дней. Забираем и возвращаем на своем транспорте.</b></p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img  class="three-columns" src="~/images/Second-three-columns/2.jpg" alt="Image">
+                                        <hr />
+                                        <p><b> Наш специалист перезвонит вам<em class="important-text"> 2 минут</em> и проконсультирет вас по любому вопросу.</b></p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img  class="three-columns" src="~/images/Second-three-columns/4.jpg" alt="Image">
+                                        <hr />
+                                        <p><b><em class="important-text">10 лет</em> реального опыта на рынке, <em class="important-text">36+</em> довольных заказчиков, <em class="important-text">300</em> реализованных проектов поставки оборудования</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <!-- END SECOND JUMBOTRON---------------------------------------------------------------------->
+                    <hr />
+                }
+            }
+        
+        <div class="container">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            &copy; 2017 <b><em>Пиломир</em></b>. Все права защищены.
+        </div>
+    </div>
+</body>
+</html>

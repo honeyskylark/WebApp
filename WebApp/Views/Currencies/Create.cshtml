@@ -1,0 +1,30 @@
+@model WebApp.Models.Currency
+
+@{
+    ViewBag.Title = "Добавление раздела";
+}
+<ol class="breadcrumb">
+    <li><a asp-action="Index" asp-controller="Home">Главная</a></li>
+    <li><a asp-action="Index" asp-controller="Currencies">Валюты</a></li>
+    <li class="active">@ViewBag.Title</li>
+</ol>
+
+<div class="container-fluid">
+    <form asp-action="Create">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Добавление Валюты</div>
+            <div class="panel-body">
+                <div class="validation" asp-validation-summary="ModelOnly"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Название</label>
+                    <input type="text" asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Добавить</button>
+        </div>
+        <a asp-action="Index" class="btn btn-primary btn-lg btn-block" role="button">Назад</a>
+    </form>
+</div>

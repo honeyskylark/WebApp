@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebApp.Models.Role>
+@{
+    ViewData["Title"] = "Роли";
+}
+
+<ol class="breadcrumb">
+    <li><a asp-action="Index" asp-controller="Home">Главная</a></li>
+    <li class="active">@ViewBag.Title</li>
+</ol>
+
+<div class="form-group">
+    <a class="btn btn-primary btn-lg btn-block" asp-action="Create" role="button">Добавить Роль</a>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><span class="glyphicon glyphicon-link"></span> Роли</div>
+    <table class="table">
+        <tr>
+            <th>Роль</th>
+            <th>Действия</th>
+        </tr>
+
+        @foreach (var role in Model)
+        {
+            <tr>
+                
+                <td>@role.Name</td>
+
+                <td>
+                    <a asp-action="Details" asp-route-id="@role.Id"><span class="glyphicon glyphicon-eye-open"></span></a> |
+                    <a asp-action="Edit" asp-route-id="@role.Id"><span class="glyphicon glyphicon-pencil"></span></a> |
+                    <a asp-action="Delete" asp-route-id="@role.Id"><span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

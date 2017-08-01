@@ -1,0 +1,29 @@
+@model WebApp.Models.Catalog
+
+@{
+    ViewBag.Title = "Каталог " + Model.Name;
+}
+
+<ol class="breadcrumb">
+    <li><a asp-action="Index" asp-controller="Home">Главная</a></li>
+    <li><a asp-action="Index" asp-controller="Catalogs">Каталоги</a></li>
+    <li class="active">@ViewBag.Title</li>
+</ol>
+
+<div class="container-fluid">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Каталог @Model.Name</div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item">ID: @Model.Id</li>
+                <li class="list-group-item">Каталог: @Model.Name</li>
+                <li class="list-group-item">Подраздел: @Model.SubSection.Name</li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <a asp-action="Edit" class="btn btn-primary btn-lg btn-block" asp-route-id="@Model.Id">Изменить</a>
+    </div>
+    <a asp-action="Index" class="btn btn-primary btn-lg btn-block" role="button">Назад</a>
+
+</div>
