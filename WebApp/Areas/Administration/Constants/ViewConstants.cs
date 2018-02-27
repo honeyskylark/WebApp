@@ -20,6 +20,7 @@ namespace WebApp.Areas.Administration.Constants
             { "Editing", "Редактирование" },
             { "ConfirmDelete", "Подтвердите удаление"},
             { "Actions", "Действия" },
+            {"ExtendedInfo", "Информация" },
             #endregion
 
             #region Currencies
