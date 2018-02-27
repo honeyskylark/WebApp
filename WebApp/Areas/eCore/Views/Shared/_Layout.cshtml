@@ -31,54 +31,50 @@
                     <ul class="nav navbar-nav navbar-left">
                         @{
                             if (User.IsInRole("Administrator"))
-                            {
-                                <li><a asp-action="Index" asp-controller="Home" asp-area=""><span class="glyphicon glyphicon-home"></span> Главная</a></li>
-                                <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-object-align-right"></span> Каталог</a></li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart"></span> Товары <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a asp-action="Index" asp-controller="Sections"><span class="glyphicon glyphicon-th-large"></span> Разделы</a></li>
-                                            <li><a asp-action="Index" asp-controller="SubSections"><span class="glyphicon glyphicon-th"></span> Подразделы</a></li>
-                                            <li><a asp-action="Index" asp-controller="Catalogs"><span class="glyphicon glyphicon-th-list"></span> Каталоги</a></li>
-                                            <li><a asp-action="Index" asp-controller="Products"><span class="glyphicon glyphicon-object-align-right"></span> Товары</a></li>
-                                        </ul>
-                                    </li>
+                            {                         
+                                <li><a asp-area="" asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                                <li><a asp-action="Index" asp-controller="Deals"><span class="glyphicon glyphicon-fire"></span> Сделки</a></li>
+                                <li><a asp-action="Index" asp-controller="Contacts"><span class="glyphicon glyphicon-phone-alt"></span> Контакты</a></li>
+                                <li><a asp-action="Index" asp-controller="Tasks"><span class="glyphicon glyphicon-calendar"></span> Задачи</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger"></span> Пользователи <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cloud"></span> CMS <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a asp-action="Index" asp-controller="Users"><span class="glyphicon glyphicon-user"></span> Пользователи</a></li>
-                                        <li><a asp-action="Index" asp-controller="Roles"><span class="glyphicon glyphicon-sunglasses"></span> Роли</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Sections"><span class="glyphicon glyphicon-th-large"></span> Разделы</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="SubSections"><span class="glyphicon glyphicon-th"></span> Подразделы</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Products"><span class="glyphicon glyphicon-object-align-right"></span> Товары</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Users"><span class="glyphicon glyphicon-user"></span> Пользователи</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Roles"><span class="glyphicon glyphicon-sunglasses"></span> Роли</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Currencies"><span class="glyphicon glyphicon-piggy-bank"></span> Валюты</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Units"><span class="glyphicon glyphicon-apple"></span> Единицы</a></li>
                                     </ul>
-                                </li>
-
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span> Полимеры <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a asp-action="Index" asp-controller="Currencies"><span class="glyphicon glyphicon-piggy-bank"></span> Валюты</a></li>
-                                        <li><a asp-action="Index" asp-controller="Units"><span class="glyphicon glyphicon-apple"></span> Единицы</a></li>
-                                    </ul>
-                                </li>
-                                <li><a asp-action="Index" asp-controller="CRM" asp-area="eCore"><span class="glyphicon glyphicon-cloud"></span> eCore</a></li>
+                                </li>                              
                             }
                             else if (User.IsInRole("Employee"))
                             {
                                 <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
                                 <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-object-align-right"></span> Каталог</a></li>
                                     <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
-                                    
+                                    <li><a asp-action="Logout" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Выйти [Сотрудник: @User.Identity.Name]</a></li>
                             }
                             else if (User.IsInRole("Customer"))
                             {
                                 <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
                                 <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-object-align-right"></span> Каталог</a></li>
                                     <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
-
+                                    <li><a asp-action="Logout" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Выйти [Клиент: @User.Identity.Name]</a></li>
                             }
+
                             else
                             {
                                 <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
                                 <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-object-align-right"></span> Каталог</a></li>
-
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-off"></span>  eCore <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a asp-action="Index" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Войти</a></li>
+                                            <li><a asp-action="Registration" asp-controller="Login"><span class="glyphicon glyphicon-check"></span> Зарегистрироваться</a></li>
+                                        </ul>
+                                    </li>
                             }
                         }
                     </ul>
@@ -90,7 +86,7 @@
                             </ul>
                         </li>
                     </ul>
-                </div>
+            </div>
             </div>
         </nav>
         <div class="container">

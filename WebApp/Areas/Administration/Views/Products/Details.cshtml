@@ -1,7 +1,7 @@
 @model WebApp.Models.Product
 @using WebApp.Areas.Administration.Services
 @{
-    ViewBag.Title = ResourceProvider.GetResource("Products");
+    ViewBag.Title = ResourceProvider.GetResource("Product");
 }
 <ol class="breadcrumb">
     <li><a asp-area="" asp-action="Index" asp-controller="Home">@ResourceProvider.GetResource("Home")</a></li>
@@ -47,5 +47,5 @@
     <div class="form-group">
         <a asp-action="Edit" class="btn btn-primary btn-lg btn-block" asp-route-id="@Model.Id">@ResourceProvider.GetResource("Edit")</a>
     </div>
-    <a asp-area="Administration" asp-action="Index" asp-controller="Products" class="btn btn-primary btn-lg btn-block" role="button">@ResourceProvider.GetResource("Products")</a>
+    <a asp-area="Administration" asp-action="Index" asp-controller="Products" class="btn btn-primary btn-lg btn-block" role="button">@ResourceProvider.GetResource("Back")</a>
 </div>

@@ -30,7 +30,7 @@ namespace WebApp
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
               .AddCookie(options => //CookieAuthenticationOptions
                 {
-                  options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Login/Index");
+                  options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Index");
               });
             services.AddMvc();
         }

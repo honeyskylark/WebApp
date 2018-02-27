@@ -28,6 +28,6 @@
         <div class="form-group">
             <input type="submit" class="btn btn-primary btn-lg btn-block" value="@ResourceProvider.GetResource("Delete")" />
         </div>
-        <a asp-action="Index" class="btn btn-primary btn-lg btn-block" Section="button">@ResourceProvider.GetResource("Sections")</a>
+        <a asp-action="Index" asp-area="Administration" asp-controller="Sections" class="btn btn-primary btn-lg btn-block" Section="button">@ResourceProvider.GetResource("Back")</a>
     </form>
 </div>

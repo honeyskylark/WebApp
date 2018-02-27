@@ -25,10 +25,8 @@
 	  <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\eCore\Controllers\" />
     <Folder Include="Areas\eCore\Data\" />
     <Folder Include="Areas\eCore\Models\" />
-    <Folder Include="Areas\eCore\Views\" />
   </ItemGroup>
 
 </Project>

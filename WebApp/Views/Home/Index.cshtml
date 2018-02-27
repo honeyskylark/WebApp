@@ -19,11 +19,17 @@
             <li><a href="#contact" class="scroll">Связаться</a></li>
             @{if (!User.Identity.IsAuthenticated)
                 {
-                    <li><a asp-area="" asp-action="Index" asp-controller="Login">Вход</a></li>
+                    <li><a asp-area="" asp-action="Index" asp-controller="Account">Вход</a></li>
                 }
                 else
                 {
-                    <li><a asp-area="" asp-action="Logout" asp-controller="Login">Выход</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">eCore <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="eCore" asp-action="Index" asp-controller="CRM">CRM</a></li>                                       
+                            <li><a asp-area="" asp-action="Logout" asp-controller="Account">Выход</a></li>
+                        </ul>
+                    </li>
                 }
             }
         </ul>
@@ -210,13 +216,12 @@
 </section>
 <!--//contactUS -->
 
-
-
-<div class="container-fluid">
+<!--
+    <div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
             <div class="panel panel-primary">
-                <div class="panel-heading"><span class="glyphicon glyphicon-link"></span> Каталоги</div>                
+                <div class="panel-heading"><span class="glyphicon glyphicon-link"></span> Каталоги</div>
                 <table class="table">
                     @{
                         foreach (var catalog in ViewBag.Catalogs)
@@ -237,7 +242,7 @@
                         }
                     }
                 </table>
-            </div>          
+            </div>
         </div>
         <div class="col-md-9 products">
             <br/>
@@ -285,7 +290,7 @@
                                                         @product.Currency.Name
 
                                                     }
-                                                }</em></b> 
+                                                }</em></b>
                                         </p>
                                         @if (product.Description.Length > 80)
                                         {
@@ -317,3 +322,4 @@
         </div>
     </div>
 </div>
+-->

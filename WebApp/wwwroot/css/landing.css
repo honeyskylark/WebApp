@@ -106,7 +106,7 @@ h2 {
 
 #header .active a {
     font-family: Montserrat, sans-serif;
-    background: #21201e;
+    background: transparent;
     color: #fff;
     font-weight: normal;
 }
@@ -118,21 +118,21 @@ h2 {
     font-weight: normal;
 }
 
-    #header .navbar-nav > li > a:hover {
-        font-family: Montserrat, sans-serif;
-        transition: 0.5s;
-        background: #21201e;
-        color: #fff;
-        font-weight: normal;
-    }
+#header .navbar-nav > li > a:hover {
+    font-family: Montserrat, sans-serif;
+    transition: 0.5s;
+    background: transparent;
+    color: #fff;
+    font-weight: normal;
+}
 
-    #header.navbar-nav > li > a:focus {
-        font-family: Montserrat, sans-serif;
-        transition: 0.5s;
-        background: #21201e;
-        color: #fff;
-        font-weight: normal;
-    }
+#header.navbar-nav > li > a:focus {
+    font-family: Montserrat, sans-serif;
+    transition: 0.5s;
+    background: transparent;
+    color: #fff;
+    font-weight: normal;
+}
 
 #header p.navbar-text {
     font-family: Montserrat, sans-serif;
@@ -159,33 +159,36 @@ h2 {
     font-size: 25px;
 }
 
-.btn {
-    font-family: Montserrat,sans-serif;
-    color: #fff;
-    font-size: 17px;
-    text-transform: uppercase;
-    padding: 10px 20px;
-    margin: 0px 10px;
-    border: none;
-    transition: background 0.5s;
+#header .navbar-right .dropdown-menu {
+    background: transparent;
+    right: auto;
 }
 
 .btn-primary {
     background: #988AEE;
+    padding: 8px 18px;
+    font-size: 18px;
 }
 
 .btn-primary:hover {
     background: #204d74;
+    transition: 0.5s;
 }
 
 .btn-default {
     background: #6a7079;
+    border-color: #6a7079;
+    color: #fff;
+    padding: 8px 18px;
+    font-size: 18px;
 }
 
-    .btn-default:hover {
-        background: #474c52;
-        color: #fff;
-    }
+.btn-default:hover {
+    background: #474c52;
+    color: #fff;
+    border-color: #6a7079;
+    transition: 0.5s;
+}
 /*--About US-------------------------------------*/
 #about {
     padding: 90px 0;
@@ -629,18 +632,27 @@ span.glyphicon {
         width: 25%;
     }
 }
+@media (max-width: 872px){
+    #header .navbar-nav {
+        display:none;
+    }
+
+}
 @media (min-width: 768px) {
     #login .form-horizontal .control-label {
         padding-top: 0px;
         margin-bottom: 0;
         text-align: right;
     }
+
     #login .panel {
         background-color: rgba(255, 255, 255, 0.80);
     }
+
     #login .btn-primary:hover {
         background: #204d74;
     }
+
     #login .panel-body {
         padding-bottom: 0px;
     }
@@ -648,7 +660,7 @@ span.glyphicon {
     #login .panel-primary > .panel-heading {
         color: #fff;
         background-color: rgba(33, 32, 30, 0.8);
-        border-color: #21201e;
+        border-color: background: transparent;;
     }
 
     #login .active a {
@@ -668,7 +680,7 @@ span.glyphicon {
     #login .navbar-nav > li > a:hover {
         font-family: Montserrat, sans-serif;
         transition: 0.5s;
-        background: #21201e;
+        background: transparent;
         color: #fff;
         font-weight: normal;
     }
@@ -676,7 +688,7 @@ span.glyphicon {
     #login.navbar-nav > li > a:focus {
         font-family: Montserrat, sans-serif;
         transition: 0.5s;
-        background: #21201e;
+        background: transparent;
         color: #fff;
         font-weight: normal;
     }

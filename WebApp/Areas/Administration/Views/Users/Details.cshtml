@@ -18,19 +18,19 @@
                     <td>@Model.Id</td>
                 </tr>
                 <tr>
-                    <th scope="row">@ResourceProvider.GetResource("FirstName") </th>
+                    <th scope="row">@ResourceProvider.GetResource("FirstName")</th>
                     <td>@Model.FirstName</td>
                 </tr>
                 <tr>
-                    <th scope="row">@ResourceProvider.GetResource("Patronymic") </th>
+                    <th scope="row">@ResourceProvider.GetResource("Patronymic")</th>
                     <td>@Model.Patronymic</td>
                 </tr>
                 <tr>
-                    <th scope="row">@ResourceProvider.GetResource("LastName") </th>
+                    <th scope="row">@ResourceProvider.GetResource("LastName")</th>
                     <td>@Model.LastName</td>
                 </tr>
                 <tr>
-                    <th scope="row">@ResourceProvider.GetResource("Role") </th>
+                    <th scope="row">@ResourceProvider.GetResource("Role")</th>
                     <td>@Model.Role.Name</td>
                 </tr>
                 <tr>
@@ -47,5 +47,5 @@
     <div class="form-group">
         <a asp-action="Edit" class="btn btn-primary btn-lg btn-block" asp-route-id="@Model.Id">@ResourceProvider.GetResource("Edit")</a>
     </div>
-    <a asp-area="Administration" asp-action="Index" asp-controller="Users" class="btn btn-primary btn-lg btn-block" role="button">@ResourceProvider.GetResource("Users")</a>
+    <a asp-area="Administration" asp-action="Index" asp-controller="Users" class="btn btn-primary btn-lg btn-block" role="button">@ResourceProvider.GetResource("Back")</a>
 </div>

@@ -10,11 +10,11 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace WebApp.Controllers
 {
-    public class LoginController : Controller
+    public class AccountController : Controller
     {
         private readonly WebAppContext _context;
 
-        public LoginController(WebAppContext context)
+        public AccountController(WebAppContext context)
         {
             _context = context;
         }

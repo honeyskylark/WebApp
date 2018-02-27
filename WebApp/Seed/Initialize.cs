@@ -13,7 +13,7 @@ namespace WebApp.Seed
             string employeeRoleName = "Employee";
             string customerRoleName = "Customer";
 
-            string adminLogin = "monroesummer";
+            string adminLogin = "skylark";
             string adminPassword = "qwerty";
 
             using (WebAppContext db = serviceProvider.GetRequiredService<WebAppContext>())

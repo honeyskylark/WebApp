@@ -1,34 +1,34 @@
 @model IEnumerable<WebApp.Models.Unit>
-
+@using WebApp.Areas.Administration.Services
 @{
-    ViewData["Title"] = "Единицы";
+    ViewBag.Title = ResourceProvider.GetResource("Units");
 }
 <ol class="breadcrumb">
-    <li><a asp-action="Index" asp-controller="Home">Главная</a></li>
+    <li><a asp-area="" asp-action="Index" asp-controller="Home">@ResourceProvider.GetResource("Home")</a></li>
     <li class="active">@ViewBag.Title</li>
 </ol>
-<div class="form-group">
-    <a class="btn btn-primary btn-lg btn-block" asp-action="Create" role="button">Добавить Единицу</a>
-</div>
-
-<div class="panel panel-primary">
-    <div class="panel-heading"><span class="glyphicon glyphicon-link"></span> Единицы</div>
-    <table class="table">
-        <tr>
-            <th>Единица</th>
-            <th>Действия</th>
-        </tr>
-
-        @foreach (var unit in Model)
-        {
+<div class="container-fluid">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><span class="glyphicon glyphicon-link"></span> @ResourceProvider.GetResource("Units")</div>
+        <table class="table">
             <tr>
-                <td>@unit.Name</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@unit.Id"><span class="glyphicon glyphicon-eye-open"></span></a> |
-                    <a asp-action="Edit" asp-route-id="@unit.Id"><span class="glyphicon glyphicon-pencil"></span></a> |
-                    <a asp-action="Delete" asp-route-id="@unit.Id"><span class="glyphicon glyphicon-trash"></span></a>
-                </td>
+                <th>@ResourceProvider.GetResource("Unit")</th>
+                <th>@ResourceProvider.GetResource("Action")</th>
             </tr>
-        }
-    </table>
+            @foreach (var unit in Model)
+            {
+                <tr>
+                    <td>@unit.Name</td>
+                    <td>
+                        <a asp-area="Administration" asp-controller="Units" asp-action="Details" asp-route-id="@unit.Id"><span class="glyphicon glyphicon-eye-open"></span></a> |
+                        <a asp-area="Administration" asp-controller="Units" asp-action="Edit" asp-route-id="@unit.Id"><span class="glyphicon glyphicon-pencil"></span></a> |
+                        <a asp-area="Administration" asp-controller="Units" asp-action="Delete" asp-route-id="@unit.Id"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="form-group">
+        <a class="btn btn-primary btn-lg btn-block" asp-controller="Units" asp-area="Administration" asp-action="Create" role="button">@ResourceProvider.GetResource("Add")</a>
+    </div>
 </div>
