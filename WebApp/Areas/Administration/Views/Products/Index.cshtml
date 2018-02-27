@@ -1,0 +1,39 @@
+@model IEnumerable<WebApp.Models.Product>
+@using WebApp.Areas.Administration.Services
+@{
+    ViewBag.Title = ResourceProvider.GetResource("Products");
+}
+<ol class="breadcrumb">
+    <li><a asp-area="" asp-action="Index" asp-controller="Home">@ResourceProvider.GetResource("Home")</a></li>
+    <li class="active">@ViewBag.Title</li>
+</ol>
+<div class="container-fluid">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><span class="glyphicon glyphicon-link"></span> @ResourceProvider.GetResource("Products")</div>
+        <table class="table">
+            <tr>
+                <th>@ResourceProvider.GetResource("Product")</th>
+                <th>@ResourceProvider.GetResource("Price")</th>
+                <th>@ResourceProvider.GetResource("Currency")</th>
+                <th>@ResourceProvider.GetResource("Actions")</th>
+            </tr>
+
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Price</td>
+                    <td>@product.Currency.Name</td>
+                    <td>
+                        <a asp-area="Administration" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id"><span class="glyphicon glyphicon-eye-open"></span></a> |
+                        <a asp-area="Administration" asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id"><span class="glyphicon glyphicon-pencil"></span></a> |
+                        <a asp-area="Administration" asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="form-group">
+        <a class="btn btn-primary btn-lg btn-block" asp-controller="Products" asp-area="Administration" asp-action="Create" role="button">@ResourceProvider.GetResource("Add")</a>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700|Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="~/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="wrap">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        @{
+                            if (User.IsInRole("Administrator"))
+                            {
+                                <li><a asp-action="Index" asp-controller="Home" asp-area=""><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                                <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-object-align-right"></span> Каталог</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart"></span> Товары <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a asp-action="Index" asp-controller="Sections"><span class="glyphicon glyphicon-th-large"></span> Разделы</a></li>
+                                            <li><a asp-action="Index" asp-controller="SubSections"><span class="glyphicon glyphicon-th"></span> Подразделы</a></li>
+                                            <li><a asp-action="Index" asp-controller="Catalogs"><span class="glyphicon glyphicon-th-list"></span> Каталоги</a></li>
+                                            <li><a asp-action="Index" asp-controller="Products"><span class="glyphicon glyphicon-object-align-right"></span> Товары</a></li>
+                                        </ul>
+                                    </li>
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger"></span> Пользователи <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a asp-action="Index" asp-controller="Users"><span class="glyphicon glyphicon-user"></span> Пользователи</a></li>
+                                        <li><a asp-action="Index" asp-controller="Roles"><span class="glyphicon glyphicon-sunglasses"></span> Роли</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span> Полимеры <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a asp-action="Index" asp-controller="Currencies"><span class="glyphicon glyphicon-piggy-bank"></span> Валюты</a></li>
+                                        <li><a asp-action="Index" asp-controller="Units"><span class="glyphicon glyphicon-apple"></span> Единицы</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Личный Кабинет <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a asp-action="Logout" asp-controller="Login" asp-area=""><span class="glyphicon glyphicon-user"></span> Выйти [Администратор: @User.Identity.Name]</a></li>
+                                    </ul>
+                                </li>
+                            }
+                            else if (User.IsInRole("Employee"))
+                            {
+                                <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                                <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-object-align-right"></span> Каталог</a></li>
+                                    <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                                    <li><a asp-action="Logout" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Выйти [Сотрудник: @User.Identity.Name]</a></li>
+                            }
+                            else if (User.IsInRole("Customer"))
+                            {
+                                <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                                <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-object-align-right"></span> Каталог</a></li>
+                                    <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                                    <li><a asp-action="Logout" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Выйти [Клиент: @User.Identity.Name]</a></li>
+                            }
+
+                            else
+                            {
+                                <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                                <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-object-align-right"></span> Каталог</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-off"></span>  eCore <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a asp-action="Index" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Войти</a></li>
+                                            <li><a asp-action="Registration" asp-controller="Login"><span class="glyphicon glyphicon-check"></span> Зарегистрироваться</a></li>
+                                        </ul>
+                                    </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <p>© 2017 Компания «Пиломир». Все права защищены | Design by <a href="https://github.com/monroesummer" class="a-footer">Asylgareev Rustam</a></p>
+        </div>
+    </div>
+</body>
+</html>

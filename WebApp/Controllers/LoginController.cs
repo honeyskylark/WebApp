@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
 using WebApp.ViewModels;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace WebApp.Controllers
 {
@@ -92,13 +94,13 @@ namespace WebApp.Controllers
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType,
                 ClaimsIdentity.DefaultRoleClaimType);
             
-            await HttpContext.Authentication.SignInAsync("Cookies", new ClaimsPrincipal(id));
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
 
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.Authentication.SignOutAsync("Cookies");
-            return RedirectToAction("Index", "Login");
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
         }
         public IActionResult AccessDenied(string returnUrl)
         {
@@ -106,9 +108,5 @@ namespace WebApp.Controllers
 
             return View();
         }
-
-
-
-
     }
 }

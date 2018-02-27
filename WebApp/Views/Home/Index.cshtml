@@ -4,16 +4,213 @@
     ViewData["Title"] = "Компания Пиломир";
 
 }
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4"></div>
-        
-        <div class="col-md-5"><div class="huge-text"><p><h1><b>Широкий ассортимент</b></h1></p></div></div>
-        <div class="col-md-3"></div>
+<section id="header">
+    <div class="navbar-left">
+        <p class="navbar-text">+7 (34792) 3-91-91</p>
+        <p class="grey">Центральный офис</p>
     </div>
-</div>
-<br/>
+
+    <div class="collapse navbar-collapse navbar-right">
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="index.html" class="active">Каталог</a></li>
+            <li><a href="#about" class="scroll">О компании</a></li>
+            <li><a href="#why" class="scroll">Почему мы</a></li>
+            <li><a href="#contacts" class="scroll">Контакты</a></li>
+            <li><a href="#contact" class="scroll">Связаться</a></li>
+            @{if (!User.Identity.IsAuthenticated)
+                {
+                    <li><a asp-area="" asp-action="Index" asp-controller="Login">Вход</a></li>
+                }
+                else
+                {
+                    <li><a asp-area="" asp-action="Logout" asp-controller="Login">Выход</a></li>
+                }
+            }
+        </ul>
+        <div class="clearfix"> </div>
+    </div><!--//navigation-->
+
+    <div class="section-table">
+        <div class="section-row">
+            <div class="section-cell">
+                <div class="section-center">
+                    <p class="logo">
+                        <img src="img/logo.png" alt="logo">
+                    </p>
+                    <p>
+                        Мы поставляем только лучшее лесопильное оборудование,
+                        провереннное работой и временем
+                    </p>
+                    <div class="section-btn">
+                        <a href="#" class="btn btn-primary">Связаться <i class="fa fa-chevron-circle-right"></i></a>
+                        <a href="#" class="btn btn-default">Каталог</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="about">
+    <div class="container">
+        <h1 class="about-title">о компании</h1>
+        <p class="large">Мы рады приветствовать вас на сайте нашей компании</p>
+        <p>
+            Компания «Пиломир» имеет большой опыт поставок ленточнопильного инструмента
+            и оборудования для самых разных отраслей промышленности. Мы предлагаем только
+            проверенные ленточные пилы европейских фирм-производителей. Собственный цех по
+            ремонту и заточке режущего инструмента укомплектован лучшим импортным оборудованием.
+            Для сварки и заточки ленточных пил используются самые современные технологии и оборудование,
+            на котором работает специально обученный опытный персонал. Главными приоритетами в
+            работе компании являются высокое качество предоставляемых услуг и выполнение заказов любой
+            сложности за минимальные сроки.
+        </p>
+    </div>
+</section>
+<section id="why">
+    <div class="container">
+        <h1 class="why-title">почему мы</h1>
+        <div class="services-info">
+            <div class="col-md-6 services-grids">
+                <div class="services-left">
+                    <span class="glyphicon glyphicon-road"></span>
+                </div>
+                <div class="services-right">
+                    <h4>Оперативно</h4>
+                    <p>Исполним ваш заказ в течении <b>3-5</b> рабочих дней. Забираем и возвращаем на своем транспорте</p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="col-md-6 services-grids">
+                <div class="services-left">
+                    <span class="glyphicon glyphicon-check"></span>
+                </div>
+                <div class="services-right">
+                    <h4>Гарантия качества</h4>
+                    <p>Высокое качество предоставляемых услуг и выполнение заказов любой сложности за минимальные сроки</p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+            <div class="services-info services-row2">
+                <div class="col-md-6 services-grids">
+                    <div class="services-left">
+                        <span class="glyphicon glyphicon-flag"></span>
+                    </div>
+                    <div class="services-right">
+                        <h4>Большой опыт</h4>
+                        <p>
+                            <ul class="list-unstyled">
+                                <li><b>10</b> лет реального опыта на рынке</li>
+                                <li><b>36+</b> довольных заказчиков</li>
+                                <li><b>300</b> реализованных проектов</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="col-md-6 services-grids">
+                    <div class="services-left">
+                        <span class="glyphicon glyphicon-earphone"></span>
+                    </div>
+                    <div class="services-right">
+                        <h4>Горячая линия</h4>
+                        <p>Наш специалист перезвонит вам в течении <b>2 минут</b> и проконсультирет вас по любому вопросу</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contacts-nav">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav ">
+            <li class="active"><a href="javascript:void(0);" type="button" id='belor'>Белорецк</a></li>
+            <li><a href="javascript:void(0);" type="button" id='ufa'>Уфа</a></li>
+            <li><a href="javascript:void(0);" type="button" id='zilair'>Зилаир</a></li>
+            <li><a href="javascript:void(0);" type="button" id='katav'>Усть-Катав</a></li>
+            <li><a href="javascript:void(0);" type="button" id='miass'>Миасс</a></li>
+        </ul>
+    </div>
+</section>
+
+<section id="contacts">
+    <div class="map">
+        <div class="col-md-7 map-left">
+            <div id="belor">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1863.1311984821675!2d58.3903154853224!3d53.96019563055192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43d0a51428bc931d%3A0x5e07a872564d5e5b!2z0YPQuy4g0JzQsNGP0LrQvtCy0YHQutC-0LPQviwg0JHQtdC70L7RgNC10YbQuiwg0KDQtdGB0L8uINCR0LDRiNC60L7RgNGC0L7RgdGC0LDQvQ!5e0!3m2!1sru!2sru!4v1501860639435" allowfullscreen></iframe>
+            </div>
+            <div id="ufa" style="display:none;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1629.2734732227618!2d55.99526190893617!3d54.72474091634169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43d93a32eb4ad3c1%3A0x332b747f210b3814!2z0YPQuy4g0KHRgtC10L_QsNC90LAg0JfQu9C-0LHQuNC90LAsIDMxLzIsINCj0YTQsCwg0KDQtdGB0L8uINCR0LDRiNC60L7RgNGC0L7RgdGC0LDQvSwgNDUwMDc4!5e0!3m2!1sru!2sru!4v1501860735642" allowfullscreen></iframe>
+            </div>
+            <div id="zilair" style="display:none;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2055.02713491336!2d57.44974297313262!3d52.22789045545959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDEzJzQxLjAiTiA1N8KwMjcnMDUuMCJF!5e0!3m2!1sru!2sru!4v1501873195166" allowfullscreen></iframe>
+            </div>
+            <div id="katav" style="display:none;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2293.04750599953!2d58.1386157155932!3d54.919638480338776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43dbaa0f82ec8a27%3A0x2dd9346a6669ea3b!2z0JDQstGC0L7QtNC-0YDQvtC20L3QsNGPINGD0LsuLCAzNCwg0KPRgdGC0Ywt0JrQsNGC0LDQsiwg0KfQtdC70Y_QsdC40L3RgdC60LDRjyDQvtCx0LsuLCA0NTYwNDA!5e0!3m2!1sru!2sru!4v1501873371776" allowfullscreen></iframe>
+            </div>
+            <div id="miass" style="display:none;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2284.6342825813413!2d60.09767491560003!3d55.06714208037562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43c53e22f176cc87%3A0x4547e24522d9778e!2z0JTQuNC90LDQvNC-0LLRgdC60L7QtSDRiC4sIDcsINCc0LjQsNGB0YEsINCn0LXQu9GP0LHQuNC90YHQutCw0Y8g0L7QsdC7LiwgNDU2MzA0!5e0!3m2!1sru!2sru!4v1501873606703" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-md-5 map-right">
+            <div id="belor">
+                <h4>Контакты</h4>
+                <p>+7 347 923 91 91 | <a href="mailto:asylgareev.r@webconsultants.ru">asylgareev.r@webconsultants.ru</a></p>
+                <h4>Адрес</h4>
+                <p>ул. Маяковского, д. 98, стр. 9, офис 5, г. Белорецк | Респ. Башкортостан, 453510</p>
+            </div>
+            <div id="ufa" style="display:none;">
+                <h4>Контакты</h4>
+                <p>+7 927 322 22 35 | <a href="mailto:asylgareev.r@webconsultants.ru">asylgareev.r@webconsultants.ru</a></p>
+                <h4>Адрес</h4>
+                <p>ул. Степана Злобина, 31/2, г. Уфа | Респ. Башкортостан, 450022 | GPS: 54°43′31″N, 55°59′44″E</p>
+            </div>
+            <div id="zilair" style="display:none;">
+                <h4>Контакты</h4>
+                <p>+7 927 937 66 11 | <a href="mailto:asylgareev.r@webconsultants.ru">asylgareev.r@webconsultants.ru</a></p>
+                <h4>Адрес</h4>
+                <p>ул. Столичная, 33, с. Зилаир | Респ. Башкортостан, 453680 | GPS: 52°13′41″N, 57°27′5″E</p>
+            </div>
+            <div id="katav" style="display:none;">
+                <h4>Контакты</h4>
+                <p>+7 909 082 48 00 (Чел. обл.) | +7 905 354 94 90 (р. Башкортостан) | <a href="mailto:asylgareev.r@webconsultants.ru">asylgareev.r@webconsultants.ru</a></p>
+                <h4>Адрес</h4>
+                <p>ул. Автодорожная, 34, г. Усть-Катав | Челябинская область, 456043 | GPS: 54°55′10″N, 58°8′13″E</p>
+            </div>
+            <div id="miass" style="display:none;">
+                <h4>Контакты</h4>
+                <p>+7 3513 55 72 77 | +7 906 860 97 93 | <a href="mailto:asylgareev.r@webconsultants.ru">asylgareev.r@webconsultants.ru</a></p>
+                <h4>Адрес</h4>
+                <p>Динамовское шоссе д. 7, г. Миасс | Челябинская область, 456043 | GPS: 55°4′2″N, 60°5′54″E</p>
+            </div>
+
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</section>
+<!--contactUS -->
+<section id="contact" class="contact">
+    <div class="team-info">
+        <div class="container">
+            <h1 class="title">Свяжитесь с нами</h1>
+            <div class="contact-form">
+                <form action="#" method="post">
+                    <input type="text" name="Name" placeholder="Имя" required="">
+                    <input class="email" name="Email" type="text" placeholder="E-mail" required="">
+                    <input type="text" name="Phone" placeholder="Телефон" required="">
+                    <textarea name="Message" placeholder="Сообщение" required=""></textarea>
+                    <input type="submit" value="Отправить">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!--//contactUS -->
+
+
 
 <div class="container-fluid">
     <div class="row">

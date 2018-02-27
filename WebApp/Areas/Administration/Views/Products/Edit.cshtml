@@ -1,0 +1,62 @@
+@model WebApp.Models.Product
+@using WebApp.Areas.Administration.Services
+@{
+    ViewBag.Title = ResourceProvider.GetResource("Editing");
+}
+<ol class="breadcrumb">
+    <li><a asp-area="" asp-action="Index" asp-controller="Home">@ResourceProvider.GetResource("Home")</a></li>
+    <li><a asp-area="Administration" asp-action="Index" asp-controller="Products">@ResourceProvider.GetResource("Products")</a></li>
+    <li class="active">@ViewBag.Title</li>
+</ol>
+
+<form asp-action="Edit">
+    <div class="container-fluid">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><span class="glyphicon glyphicon-pencil"></span> @ResourceProvider.GetResource("Editing")</div>
+            <div class="panel-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">@ResourceProvider.GetResource("Product")</label>
+                    <input type="text" asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label">@ResourceProvider.GetResource("Description")</label>
+                    <input type="text" asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label">@ResourceProvider.GetResource("Price")</label>
+                    <input type="text" asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="CurrencyId" class="control-label">@ResourceProvider.GetResource("Currency")</label>
+                    <select asp-for="CurrencyId" class="form-control" asp-items="ViewBag.CurrencyId"></select>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="UnitId" class="control-label">@ResourceProvider.GetResource("Unit")</label>
+                    <select asp-for="UnitId" class="form-control" asp-items="ViewBag.UnitId"></select>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="CatalogId" class="control-label">@ResourceProvider.GetResource("Catalog")</label>
+                    <select asp-for="CatalogId" class="form-control" asp-items="ViewBag.CatalogId"></select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">@ResourceProvider.GetResource("Edit")</button>
+        </div>
+        <a asp-area="Administration"  asp-controller="Products" asp-action="Index" class="btn btn-primary btn-lg btn-block" role="button">@ResourceProvider.GetResource("Products")</a>
+    </div>
+</form>
+
+
+
+
+
+

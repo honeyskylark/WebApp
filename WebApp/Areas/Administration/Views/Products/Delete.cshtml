@@ -1,0 +1,53 @@
+@model WebApp.Models.Product
+@using WebApp.Areas.Administration.Services
+@{
+    ViewBag.Title = ResourceProvider.GetResource("Delete");
+}
+<ol class="breadcrumb">
+    <li><a asp-area="" asp-action="Index" asp-controller="Home">@ResourceProvider.GetResource("Home")</a></li>
+    <li><a asp-area="Administration" asp-action="Index" asp-controller="Products">@ResourceProvider.GetResource("Products")</a></li>
+    <li class="active">@ViewBag.Title</li>
+</ol>
+<div class="container-fluid">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><span class="glyphicon glyphicon-trash"></span> @ResourceProvider.GetResource("ConfirmDelete")</div>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row">@ResourceProvider.GetResource("Identifier")</th>
+                    <td>@Model.Id</td>
+                </tr>
+                <tr>
+                    <th scope="row">@ResourceProvider.GetResource("Product")</th>
+                    <td>@Model.Name</td>
+                </tr>
+                <tr>
+                    <th scope="row">@ResourceProvider.GetResource("Description")</th>
+                    <td>@Model.Description</td>
+                </tr>
+                <tr>
+                    <th scope="row">@ResourceProvider.GetResource("Price")</th>
+                    <td>@Model.Price</td>
+                </tr>
+                <tr>
+                    <th scope="row">@ResourceProvider.GetResource("Currency")</th>
+                    <td>@Model.Currency.Name</td>
+                </tr>
+                <tr>
+                    <th scope="row">@ResourceProvider.GetResource("Unit")</th>
+                    <td>@Model.Unit.Name</td>
+                </tr>
+                <tr>
+                    <th scope="row">@ResourceProvider.GetResource("Catalog")</th>
+                    <td>@Model.Catalog.Name</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <form asp-action="Delete" method="post">
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-lg btn-block" value="@ResourceProvider.GetResource("Delete")" />
+        </div>
+        <a asp-action="Index" class="btn btn-primary btn-lg btn-block" role="button">@ResourceProvider.GetResource("Products")</a>
+    </form>
+</div>

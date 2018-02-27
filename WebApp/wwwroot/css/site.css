@@ -1,31 +1,28 @@
-﻿:root {
-    --color1: rgba(255, 179, 0, 0.3);
-    --color2: rgba(255, 179, 0, 0.5);
-    --color3: rgba(255, 179, 0, 0.80);
-    --color4: rgba(255, 179, 0, 0.90);
-    --color5: rgba(255, 179, 0, 0.85);
-    --ivoryBackground: ivory;
-    --blackColor: #171000;
-}
-html,
+﻿html,
 body {
     height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url(/images/back.png);
+    font-family: Ubuntu, sans-serif;
+    background: url(/img/Admin-Background.jpg) center;
+    background-size: cover;
     background-repeat: repeat;
 }
 /* Links -------------------------------------- */
 a {
     color: #000000;
     text-decoration: none;
+    transition: background 0.5s;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: rgba(108, 108, 108, 0.80);    
 }
 .badge{
     background-color: var(--color5);
 }
 
 a:hover, a:focus {
-    color: var(--color5);
-    text-decoration: underline;
+    color: rgba(108, 108, 108, 0.80);
+    text-decoration: none;
+    
 }
 /* Text -------------------------------------- */
 .important-text{
@@ -76,37 +73,36 @@ a:hover, a:focus {
     border: 1px solid var(--blackColor);
     margin: 0;
 }
-   
+
 
 .navbar-default .navbar-nav > li > a {
-    color: darkslategray;
+    color: rgba(255, 255, 255, 0.80);
 }
 .navbar-nav > li > .dropdown-menu {
     margin-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    background-color: var(--color4);
+    background-color: rgba(255, 255, 255, 0.90);
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-   
-    background-color: darkslategrey;
-    color: var(--color5)
+    background-color: rgba(33, 32, 30, 0.9);
+    color: #fff
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
     color: #262626;
     text-decoration: none;
-    background-color: darkslategrey;
-    color: var(--color5)
+    background-color: rgba(33, 32, 30, 0.9);
+    color: #fff
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     color: #000000;
-    background-color: var(--color4);
+    background-color: rgba(255, 255, 255, 0.80);
 }
 
 .navbar-default {
-    background-color: var(--color3);
+    background-color: rgba(33, 32, 30, 0.5);
 }
 @media (max-width: 767px){
    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -124,6 +120,14 @@ a:hover, a:focus {
     border-radius: 20px;
 }
 /* Buttons-------------------------------------- */
+.btn {
+    font-family: Montserrat,sans-serif;
+    color: #fff;
+    font-size: 17px;
+    padding: 10px 20px;
+    border: none;
+    transition: background 0.5s;
+}
 
 .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
     color: #fff;
@@ -136,14 +140,13 @@ a:hover, a:focus {
     border-color: var(--color5);
 }
 .btn-primary {
-    border-color: var(--blackColor);
-    background-color: var(--color5);
+    background-color: rgba(255, 255, 255, 0.80);
+    color: #21201e
 }
 
 .btn-primary:hover {
-    color: #fff;
-    background-color: var(--color2);
-    border-color: var(--color5);
+    background-color: rgba(108, 108, 108, 0.80);
+    color: rgba(255, 255, 255, 0.80);
 }
 .btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus {
     color: #fff;
@@ -153,13 +156,16 @@ a:hover, a:focus {
 
 /* Panel-------------------------------------- */
 .panel-primary > .panel-heading {
-    background-color: var(--color5);
-    border-color: var(--blackColor);
+    color: #fff;
+    background-color: rgba(33, 32, 30, 0.8);
+    border-color: #21201e;
 }
-
+.panel-primary {
+    border-color: #21201e;
+}
 .panel {
-    border-color: var(--blackColor);
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(255, 255, 255, 0.80);
+    border-radius: 5px;
 }
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
     border-top-color: var(--blackColor);
@@ -168,10 +174,16 @@ a:hover, a:focus {
 /* Footer --------------------------------------- */
 .footer {
     height: 60px;
-    background-color: var(--color3);
+    background-color: rgba(33, 32, 30, 0.5);
     border-top: 1px solid #ddd;
     padding-top: 20px;
     border: 1px solid var(--blackColor);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.80);
+}
+.a-footer {
+    color: rgba(255, 255, 255, 0.80);
+    transition: background 0.5s;
 }
 /* list-group-items ---------------------------------------*/
 .list-group-item {
@@ -194,11 +206,23 @@ a:hover, a:focus {
     padding: 20px 20px 20px;
 }
 /* Breadcrumb-------------------------------------- */
-.breadcrumb{
-    background-color: transparent;
-    border-radius:5px; 
-    border: 1px solid var(--blackColor);
+
+.breadcrumb {
+    border-radius: 5px;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.80);
+    border-color: #21201e;
 }
+
+.breadcrumb > .active {
+    color: #000000;
+}
+.breadcrumb > li + li:before {
+    padding: 0 5px;
+    color: #000000;
+    content: "/\00a0";
+}
+
 /* Jumbotron-------------------------------------- */
 @media screen and (min-width: 768px) {
     .jumbotron h1, .jumbotron .h1 {

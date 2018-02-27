@@ -7,115 +7,48 @@ using Microsoft.Extensions.DependencyInjection;
 using WebApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace WebApp
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
 
-        public IConfigurationRoot Configuration { get; }
+        public IConfiguration Configuration { get; }
 
 
         public void ConfigureServices(IServiceCollection services)
         {
-
-            //string connection = "Server=(localdb)\\mssqllocaldb;Database=WebAppDB;Trusted_Connection=True;MultipleActiveResultSets=true";
-            string connection = "Data Source=SQL6003.SmarterASP.NET;Initial Catalog=DB_A289C6_ecoremaster;User Id=DB_A289C6_ecoremaster_admin;Password=Naturesprophet27;";
+            string connection = "Server=(localdb)\\mssqllocaldb;Database=WebAppDB;Trusted_Connection=True;MultipleActiveResultSets=true";
+            //string connection = "Data Source=SQL6003.SmarterASP.NET;Initial Catalog=DB_A289C6_ecoremaster;User Id=DB_A289C6_ecoremaster_admin;Password=Naturesprophet27;";
             services.AddDbContext<WebAppContext>(options => options.UseSqlServer(connection));
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+              .AddCookie(options => //CookieAuthenticationOptions
+                {
+                  options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Login/Index");
+              });
             services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseDeveloperExceptionPage();
-
             app.UseStaticFiles();
-
-            app.UseDeveloperExceptionPage();
-
-
-
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationScheme = "Cookies",
-                LoginPath = new Microsoft.AspNetCore.Http.PathString("/Login/Index"),
-                AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Login/AccessDenied"),
-                AutomaticAuthenticate = true,
-                AutomaticChallenge = true
-            });
-
-
-
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-            
-            DatabaseInitialize(app.ApplicationServices);
-        }
-
-
-
-        public void DatabaseInitialize(IServiceProvider serviceProvider)
-        {
-            string adminRoleName = "Administrator";
-            string employeeRoleName = "Employee";
-            string customerRoleName = "Customer";
-
-            string adminLogin = "monroesummer";
-            string adminPassword = "qwerty";
-
-            using (WebAppContext db = serviceProvider.GetRequiredService<WebAppContext>())
-            {
-                Role adminRole = db.Roles.FirstOrDefault(x => x.Name == adminRoleName);
-                Role userRole = db.Roles.FirstOrDefault(x => x.Name == customerRoleName);
-                Role employeeRole = db.Roles.FirstOrDefault(x => x.Name == employeeRoleName);
-                // добавляем роли, если их нет
-                if (adminRole == null)
-                {
-                    adminRole = new Role { Name = adminRoleName };
-                    db.Roles.Add(adminRole);
-                }
-                if (userRole == null)
-                {
-                    userRole = new Role { Name = customerRoleName };
-                    db.Roles.Add(userRole);
-                }
-                if(employeeRole == null)
-                {
-                    employeeRole = new Role { Name = employeeRoleName };
-                    db.Roles.Add(employeeRole);
-                }
-                db.SaveChanges();
-
-                
-                User admin = db.Users.FirstOrDefault(u => u.Login == adminLogin);
-                if (admin == null)
-                {
-                    db.Users.Add(new User
-                    {
-                        FirstName = "Рустам",
-                        LastName = "Асылгареев",
-                       	Patronymic = "Фанилевич",
-                        Login = adminLogin,
-                        Password = adminPassword,
-                        Role = adminRole
-
-                    });
-                    db.SaveChanges();
-                }
-            }
         }
     }
 }

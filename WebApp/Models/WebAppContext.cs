@@ -16,10 +16,10 @@ namespace WebApp.Models
 
         }
 
-        public DbSet<WebApp.Models.SubSection> SubSection { get; set; }
+        public DbSet<SubSection> SubSection { get; set; }
 
-        public DbSet<WebApp.Models.Unit> Unit { get; set; }
+        public DbSet<Unit> Unit { get; set; }
 
-        public DbSet<WebApp.Models.Currency> Currency { get; set; }
+        public DbSet<Currency> Currency { get; set; }
     }
 }
