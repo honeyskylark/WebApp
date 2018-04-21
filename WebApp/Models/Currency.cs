@@ -8,6 +8,5 @@ namespace WebApp.Models
 
         [Required(ErrorMessage = "Необходимо заполнить \"Название\"")]
         public string Name { get; set; }
-
     }
 }

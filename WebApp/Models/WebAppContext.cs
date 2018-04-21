@@ -10,16 +10,20 @@ namespace WebApp.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<SubSection> SubSections { get; set; }
+        public DbSet<Unit> Units { get; set; }
+        public DbSet<Currency> Currencies { get; set; }
+        public DbSet<Deal> Deals { get; set; }
+        public DbSet<Process>Processes { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<From> Froms { get; set; }
 
         public WebAppContext(DbContextOptions<WebAppContext> options) : base(options)
         {
 
         }
 
-        public DbSet<SubSection> SubSection { get; set; }
 
-        public DbSet<Unit> Unit { get; set; }
-
-        public DbSet<Currency> Currency { get; set; }
     }
 }

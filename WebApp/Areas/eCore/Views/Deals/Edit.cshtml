@@ -1,0 +1,67 @@
+@model WebApp.Models.Deal
+@using WebApp.Services
+@{
+    ViewBag.Title = ResourceProvider.GetResource("Editing");
+}
+<br />
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a asp-area="" asp-action="Index" asp-controller="Home">@ResourceProvider.GetResource("Home")</a></li>
+        <li><a asp-area="eCore" asp-action="Index" asp-controller="Deals">@ResourceProvider.GetResource("Deals")</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+    <div class="container-fluid">
+        <form asp-action="Edit">
+            <div class="panel panel-primary">
+                <div class="panel-heading"><span class="glyphicon glyphicon-pencil"></span> @ResourceProvider.GetResource("Editing")</div>
+                <div class="panel-body">
+                    <div class="validation" asp-validation-summary="ModelOnly"></div>
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label">@ResourceProvider.GetResource("Title")</label>
+                        <input type="text" asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label">@ResourceProvider.GetResource("Description")</label>
+                        <textarea rows="4" type="text" asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ProcessId" class="control-label">@ResourceProvider.GetResource("Process")</label>
+                        <select asp-for="ProcessId" class="form-control" asp-items="ViewBag.ProcessId"></select>
+                        <span asp-validation-for="ProcessId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ContactId" class="control-label">@ResourceProvider.GetResource("Contact")</label>
+                        <select asp-for="ContactId" class="form-control" asp-items="ViewBag.ContactId"></select>
+                        <span asp-validation-for="ContactId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FromId" class="control-label">@ResourceProvider.GetResource("From")</label>
+                        <select asp-for="FromId" class="form-control" asp-items="ViewBag.FromId"></select>
+                        <span asp-validation-for="FromId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ProductId" class="control-label">@ResourceProvider.GetResource("Product")</label>
+                        <select asp-for="ProductId" class="form-control" asp-items="ViewBag.ProductId"></select>
+                        <span asp-validation-for="ProductId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserId" class="control-label">@ResourceProvider.GetResource("User")</label>
+                        <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                        <span asp-validation-for="UserId" class="text-danger"></span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">@ResourceProvider.GetResource("Edit")</button>
+            </div>
+            <a asp-area="eCore" asp-action="Index" asp-controller="Deals" class="btn btn-primary btn-lg btn-block" role="button">@ResourceProvider.GetResource("Back")</a>
+        </form>
+    </div>
+</div>  
+
+<br />

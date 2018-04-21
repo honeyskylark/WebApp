@@ -53,7 +53,7 @@ namespace WebApp.Areas.Administration.Controllers
         [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
-            ViewData["SubSectionId"] = new SelectList(_context.SubSection, "Id", "Name");
+            ViewData["SubSectionId"] = new SelectList(_context.SubSections, "Id", "Name");
             return View();
         }
 
@@ -70,7 +70,7 @@ namespace WebApp.Areas.Administration.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["SubSectionId"] = new SelectList(_context.SubSection, "Id", "Name", catalog.SubSectionId);
+            ViewData["SubSectionId"] = new SelectList(_context.SubSections, "Id", "Name", catalog.SubSectionId);
             return View(catalog);
         }
 
@@ -89,7 +89,7 @@ namespace WebApp.Areas.Administration.Controllers
             {
                 return NotFound();
             }
-            ViewData["SubSectionId"] = new SelectList(_context.SubSection, "Id", "Name", catalog.SubSectionId);
+            ViewData["SubSectionId"] = new SelectList(_context.SubSections, "Id", "Name", catalog.SubSectionId);
             return View(catalog);
         }
 
@@ -125,7 +125,7 @@ namespace WebApp.Areas.Administration.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["SubSectionId"] = new SelectList(_context.SubSection, "Id", "Name", catalog.SubSectionId);
+            ViewData["SubSectionId"] = new SelectList(_context.SubSections, "Id", "Name", catalog.SubSectionId);
             return View(catalog);
         }
 

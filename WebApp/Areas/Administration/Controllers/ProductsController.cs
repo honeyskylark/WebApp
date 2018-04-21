@@ -57,8 +57,8 @@ namespace WebApp.Areas.Administration.Controllers
         public IActionResult Create()
         {
             ViewData["CatalogId"] = new SelectList(_context.Catalogs, "Id", "Name");
-            ViewData["CurrencyId"] = new SelectList(_context.Currency, "Id", "Name");
-            ViewData["UnitId"] = new SelectList(_context.Unit, "Id", "Name");
+            ViewData["CurrencyId"] = new SelectList(_context.Currencies, "Id", "Name");
+            ViewData["UnitId"] = new SelectList(_context.Units, "Id", "Name");
             return View();
         }
 
@@ -78,8 +78,8 @@ namespace WebApp.Areas.Administration.Controllers
                 return RedirectToAction("Index");
             }
             ViewData["CatalogId"] = new SelectList(_context.Catalogs, "Id", "Name", product.CatalogId);
-            ViewData["CurrencyId"] = new SelectList(_context.Currency, "Id", "Name", product.CurrencyId);
-            ViewData["UnitId"] = new SelectList(_context.Unit, "Id", "Name", product.UnitId);
+            ViewData["CurrencyId"] = new SelectList(_context.Currencies, "Id", "Name", product.CurrencyId);
+            ViewData["UnitId"] = new SelectList(_context.Units, "Id", "Name", product.UnitId);
             return View(product);
         }
 
@@ -99,8 +99,8 @@ namespace WebApp.Areas.Administration.Controllers
                 return NotFound();
             }
             ViewData["CatalogId"] = new SelectList(_context.Catalogs, "Id", "Name", product.CatalogId);
-            ViewData["CurrencyId"] = new SelectList(_context.Currency, "Id", "Name", product.CurrencyId);
-            ViewData["UnitId"] = new SelectList(_context.Unit, "Id", "Name", product.UnitId);
+            ViewData["CurrencyId"] = new SelectList(_context.Currencies, "Id", "Name", product.CurrencyId);
+            ViewData["UnitId"] = new SelectList(_context.Units, "Id", "Name", product.UnitId);
             return View(product);
         }
 
@@ -137,8 +137,8 @@ namespace WebApp.Areas.Administration.Controllers
                 return RedirectToAction("Index");
             }
             ViewData["CatalogId"] = new SelectList(_context.Catalogs, "Id", "Name", product.CatalogId);
-            ViewData["CurrencyId"] = new SelectList(_context.Currency, "Id", "Name", product.CurrencyId);
-            ViewData["UnitId"] = new SelectList(_context.Unit, "Id", "Name", product.UnitId);
+            ViewData["CurrencyId"] = new SelectList(_context.Currencies, "Id", "Name", product.CurrencyId);
+            ViewData["UnitId"] = new SelectList(_context.Units, "Id", "Name", product.UnitId);
             return View(product);
         }
 

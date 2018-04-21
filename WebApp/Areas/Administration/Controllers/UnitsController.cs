@@ -24,7 +24,7 @@ namespace WebApp.Areas.Administration.Controllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Unit.ToListAsync());
+            return View(await _context.Units.ToListAsync());
         }
 
         // GET: Units/Details/5
@@ -37,7 +37,7 @@ namespace WebApp.Areas.Administration.Controllers
                 return NotFound();
             }
 
-            var unit = await _context.Unit
+            var unit = await _context.Units
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (unit == null)
             {
@@ -81,7 +81,7 @@ namespace WebApp.Areas.Administration.Controllers
                 return NotFound();
             }
 
-            var unit = await _context.Unit.SingleOrDefaultAsync(m => m.Id == id);
+            var unit = await _context.Units.SingleOrDefaultAsync(m => m.Id == id);
             if (unit == null)
             {
                 return NotFound();
@@ -134,7 +134,7 @@ namespace WebApp.Areas.Administration.Controllers
                 return NotFound();
             }
 
-            var unit = await _context.Unit
+            var unit = await _context.Units
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (unit == null)
             {
@@ -151,15 +151,15 @@ namespace WebApp.Areas.Administration.Controllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var unit = await _context.Unit.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Unit.Remove(unit);
+            var unit = await _context.Units.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Units.Remove(unit);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
         private bool UnitExists(int id)
         {
-            return _context.Unit.Any(e => e.Id == id);
+            return _context.Units.Any(e => e.Id == id);
         }
     }
 }

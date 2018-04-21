@@ -75,8 +75,8 @@ namespace WebApp.Controllers
                 if (user != null)
                 {
                     await Authenticate(user);
-                    return RedirectToAction("Index", "Home");
-                    
+                    return Redirect("eCore/Deals/Index");
+
                 }
                 ModelState.AddModelError("", "Неправильный логин и(или) пароль");
             }

@@ -20,12 +20,8 @@ namespace WebApp.Models
         [Required(ErrorMessage = "Необходимо заполнить \"Пароль\"")]
         public string Password { get; set; }
 
-
         [Required(ErrorMessage = "Необходимо заполнить \"Роль\"")]
         public int? RoleId { get; set; }
         public Role Role { get; set; }
-
-
-
     }
 }

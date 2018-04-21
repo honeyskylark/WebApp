@@ -24,7 +24,7 @@ namespace WebApp.Areas.Administration.Controllers
         [Area("Administration")]
         public async Task<IActionResult> Index()
         {
-            var webAppContext = _context.SubSection.Include(s => s.Section);
+            var webAppContext = _context.SubSections.Include(s => s.Section);
             return View(await webAppContext.ToListAsync());
         }
 
@@ -38,7 +38,7 @@ namespace WebApp.Areas.Administration.Controllers
                 return NotFound();
             }
 
-            var subSection = await _context.SubSection
+            var subSection = await _context.SubSections
                 .Include(s => s.Section)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (subSection == null)
@@ -87,7 +87,7 @@ namespace WebApp.Areas.Administration.Controllers
                 return NotFound();
             }
 
-            var subSection = await _context.SubSection.SingleOrDefaultAsync(m => m.Id == id);
+            var subSection = await _context.SubSections.SingleOrDefaultAsync(m => m.Id == id);
             if (subSection == null)
             {
                 return NotFound();
@@ -142,7 +142,7 @@ namespace WebApp.Areas.Administration.Controllers
                 return NotFound();
             }
 
-            var subSection = await _context.SubSection
+            var subSection = await _context.SubSections
                 .Include(s => s.Section)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (subSection == null)
@@ -160,15 +160,15 @@ namespace WebApp.Areas.Administration.Controllers
         [Area("Administration")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var subSection = await _context.SubSection.SingleOrDefaultAsync(m => m.Id == id);
-            _context.SubSection.Remove(subSection);
+            var subSection = await _context.SubSections.SingleOrDefaultAsync(m => m.Id == id);
+            _context.SubSections.Remove(subSection);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
         private bool SubSectionExists(int id)
         {
-            return _context.SubSection.Any(e => e.Id == id);
+            return _context.SubSections.Any(e => e.Id == id);
         }
     }
 }

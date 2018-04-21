@@ -1,0 +1,60 @@
+@model WebApp.Models.Deal
+@using WebApp.Services
+@{
+    ViewBag.Title = ResourceProvider.GetResource("Delete");
+}
+<br />
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a asp-area="" asp-action="Index" asp-controller="Home">@ResourceProvider.GetResource("Home")</a></li>
+        <li><a asp-area="eCore" asp-action="Index" asp-controller="Deals">@ResourceProvider.GetResource("Deals")</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><span class="glyphicon glyphicon-trash"></span> @ResourceProvider.GetResource("ConfirmDelete")</div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("Identifier")</th>
+                        <td>@Model.Id</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("Title")</th>
+                        <td>@Model.Title</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("Description")</th>
+                        <td>@Model.Description</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("Process")</th>
+                        <td>@Model.Process.Title</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("Process")</th>
+                        <td>@Model.Contact.FirstName @Model.Contact.LastName</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("From")</th>
+                        <td>@Model.From.Name</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("Product")</th>
+                        <td>@Model.Product.Name</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("User")</th>
+                        <td>@Model.User.FirstName @Model.User.LastName</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <form asp-action="Delete" method="post">
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="@ResourceProvider.GetResource("Delete")" />
+            </div>
+            <a asp-action="Index" class="btn btn-primary btn-lg btn-block" role="button">@ResourceProvider.GetResource("Back")</a>
+        </form>
+    </div>
+</div>

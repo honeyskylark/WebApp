@@ -1,5 +1,5 @@
 @model IEnumerable<WebApp.Models.User>
-@using WebApp.Areas.Administration.Services
+@using WebApp.Services
 @{
     ViewBag.Title = ResourceProvider.GetResource("Users");
 }
@@ -15,7 +15,7 @@
             <tr>
                 <th>@ResourceProvider.GetResource("FirstName")</th>
                 <th>@ResourceProvider.GetResource("LastName")</th>
-                <th>@ResourceProvider.GetResource("Action")</th>
+                <th>@ResourceProvider.GetResource("Actions")</th>
             </tr>
             @foreach (var user in Model)
             {

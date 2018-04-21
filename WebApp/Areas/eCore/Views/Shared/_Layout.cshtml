@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using WebApp.Services
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -32,9 +33,15 @@
                         @{
                             if (User.IsInRole("Administrator"))
                             {                         
-                                <li><a asp-area="" asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
-                                <li><a asp-action="Index" asp-controller="Deals"><span class="glyphicon glyphicon-fire"></span> Сделки</a></li>
-                                <li><a asp-action="Index" asp-controller="Contacts"><span class="glyphicon glyphicon-phone-alt"></span> Контакты</a></li>
+                                <li><a asp-area="" asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> @ResourceProvider.GetResource("Home")</a></li>
+                                <li><a asp-area="eCore" asp-controller="Deals" asp-action="Index"><span class="glyphicon glyphicon-fire"></span> @ResourceProvider.GetResource("Deals")</a></li>                                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-phone-alt"></span> @ResourceProvider.GetResource("Contacts") <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a asp-action="Index" asp-controller="Contacts"><span class="glyphicon glyphicon-flag"></span> @ResourceProvider.GetResource("Clients")</a></li>
+                                        <li><a asp-action="Index" asp-controller="Companies"><span class="glyphicon glyphicon-briefcase"></span> @ResourceProvider.GetResource("Companies")</a></li>  
+                                    </ul>
+                                </li> 
                                 <li><a asp-action="Index" asp-controller="Tasks"><span class="glyphicon glyphicon-calendar"></span> Задачи</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cloud"></span> CMS <span class="caret"></span></a>
@@ -46,6 +53,7 @@
                                         <li><a asp-area="Administration" asp-action="Index" asp-controller="Roles"><span class="glyphicon glyphicon-sunglasses"></span> Роли</a></li>
                                         <li><a asp-area="Administration" asp-action="Index" asp-controller="Currencies"><span class="glyphicon glyphicon-piggy-bank"></span> Валюты</a></li>
                                         <li><a asp-area="Administration" asp-action="Index" asp-controller="Units"><span class="glyphicon glyphicon-apple"></span> Единицы</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Froms"><span class="glyphicon glyphicon-share-alt"></span> Заказал</a></li>
                                     </ul>
                                 </li>                              
                             }
@@ -53,28 +61,28 @@
                             {
                                 <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
                                 <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-object-align-right"></span> Каталог</a></li>
-                                    <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
-                                    <li><a asp-action="Logout" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Выйти [Сотрудник: @User.Identity.Name]</a></li>
+                                <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                                <li><a asp-action="Logout" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Выйти [Сотрудник: @User.Identity.Name]</a></li>
                             }
                             else if (User.IsInRole("Customer"))
                             {
                                 <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
                                 <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-object-align-right"></span> Каталог</a></li>
-                                    <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
-                                    <li><a asp-action="Logout" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Выйти [Клиент: @User.Identity.Name]</a></li>
+                                <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
+                                <li><a asp-action="Logout" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Выйти [Клиент: @User.Identity.Name]</a></li>
                             }
 
                             else
                             {
                                 <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
                                 <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-object-align-right"></span> Каталог</a></li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-off"></span>  eCore <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a asp-action="Index" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Войти</a></li>
-                                            <li><a asp-action="Registration" asp-controller="Login"><span class="glyphicon glyphicon-check"></span> Зарегистрироваться</a></li>
-                                        </ul>
-                                    </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-off"></span>  eCore <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a asp-action="Index" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Войти</a></li>
+                                        <li><a asp-action="Registration" asp-controller="Login"><span class="glyphicon glyphicon-check"></span> Зарегистрироваться</a></li>
+                                    </ul>
+                                </li>
                             }
                         }
                     </ul>
@@ -82,14 +90,14 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Личный Кабинет <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a asp-action="Logout" asp-controller="Login" asp-area=""><span class="glyphicon glyphicon-user"></span> Выйти [Администратор: @User.Identity.Name]</a></li>
+                                <li><a asp-action="Logout" asp-controller="Account" asp-area=""><span class="glyphicon glyphicon-user"></span> Выйти [Администратор: @User.Identity.Name]</a></li>
                             </ul>
                         </li>
                     </ul>
             </div>
             </div>
         </nav>
-        <div class="container">
+        <div class="container-fluid">
             @RenderBody()
         </div>
     </div>

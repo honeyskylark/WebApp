@@ -1,6 +1,4 @@
-﻿@model IEnumerable<WebApp.Models.Product>
-
-@{
+﻿@{
     ViewData["Title"] = "Компания Пиломир";
 
 }
@@ -26,7 +24,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">eCore <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a asp-area="eCore" asp-action="Index" asp-controller="CRM">CRM</a></li>                                       
+                            <li><a asp-area="eCore" asp-action="Index" asp-controller="Deals">CRM</a></li>                                       
                             <li><a asp-area="" asp-action="Logout" asp-controller="Account">Выход</a></li>
                         </ul>
                     </li>
@@ -215,111 +213,3 @@
     </div>
 </section>
 <!--//contactUS -->
-
-<!--
-    <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="panel panel-primary">
-                <div class="panel-heading"><span class="glyphicon glyphicon-link"></span> Каталоги</div>
-                <table class="table">
-                    @{
-                        foreach (var catalog in ViewBag.Catalogs)
-                        {
-                            var productCount = 0;
-                            foreach (var product in Model)
-                            {
-                                if (product.CatalogId == catalog.Id)
-                                {
-                                    productCount += 1;
-                                }
-                            }
-                            <tr>
-                                <td>
-                                    <a href="#" @*asp-action="Offer" asp-route-id="@catalog.Id"*@>@catalog.Name <span class="badge">@productCount</span> </a>
-                                </td>
-                            </tr>
-                        }
-                    }
-                </table>
-            </div>
-        </div>
-        <div class="col-md-9 products">
-            <br/>
-            <div class="container-fluid">
-                @{
-                    var itemCount = 0;
-
-                    while (itemCount < 3)
-                    {
-                        foreach (var product in Model)
-                        {
-                            if (itemCount == 0)
-                            {
-                                @:<div class="row">
-                            }
-                            <div class="col-md-4">
-                                <div class="thumbnail">
-                                    <img src="https://react-bootstrap.github.io/assets/thumbnaildiv.png" alt="Image">
-                                    <div class="caption">
-
-                                        @if (product.Name.Length > 45)
-                                        {
-                                            <h4>@product.Name.Substring(0, 45)...</h4>
-                                        }
-                                        else
-                                        {
-                                            <h4>@product.Name</h4>
-                                        }
-                                        <p>Цена: <b><em>@product.Price
-                                                @{if (product.Currency.Name == "RUB")
-                                                    {
-                                                        <span class="glyphicon glyphicon-ruble"></span>
-                                                    }
-                                                    else if (product.Currency.Name == "EUR")
-                                                    {
-                                                        <span class="glyphicon glyphicon-euro"></span>
-                                                    }
-                                                    else if (product.Currency.Name == "DOL")
-                                                    {
-                                                        @:Долларов
-
-                                                    }
-                                                    else
-                                                    {
-                                                        @product.Currency.Name
-
-                                                    }
-                                                }</em></b>
-                                        </p>
-                                        @if (product.Description.Length > 80)
-                                        {
-                                            <p>@product.Description.Substring(0, 80)...</p>
-                                        }
-                                        else
-                                        {
-                                            <p>@product.Description</p>
-
-                                        }
-                                        <p><a href="#" @*asp-route-id="@product.Id"*@ class="btn btn-primary btn-block" role="button">Заказать Сейчас</a></p>
-
-                                        <p><a href="#" @*asp-route-id="@product.Id"*@ class="btn btn-info btn-block" role="button">Подробнее</a></p>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            itemCount++;
-                            if ((itemCount % 3) == 0)
-                            {
-                                @:</div>
-                            }
-                        }
-                    }
-                    itemCount = 0;
-                }
-            </div>
-        </div>
-    </div>
-</div>
--->

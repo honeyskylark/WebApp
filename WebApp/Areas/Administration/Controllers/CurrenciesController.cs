@@ -21,7 +21,7 @@ namespace WebApp.Areas.Administration.Controllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Currency.ToListAsync());
+            return View(await _context.Currencies.ToListAsync());
         }
 
         // GET: Currencies/Details/5
@@ -34,7 +34,7 @@ namespace WebApp.Areas.Administration.Controllers
                 return NotFound();
             }
 
-            var currency = await _context.Currency
+            var currency = await _context.Currencies
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (currency == null)
             {
@@ -78,7 +78,7 @@ namespace WebApp.Areas.Administration.Controllers
                 return NotFound();
             }
 
-            var currency = await _context.Currency.SingleOrDefaultAsync(m => m.Id == id);
+            var currency = await _context.Currencies.SingleOrDefaultAsync(m => m.Id == id);
             if (currency == null)
             {
                 return NotFound();
@@ -131,7 +131,7 @@ namespace WebApp.Areas.Administration.Controllers
                 return NotFound();
             }
 
-            var currency = await _context.Currency
+            var currency = await _context.Currencies
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (currency == null)
             {
@@ -148,15 +148,15 @@ namespace WebApp.Areas.Administration.Controllers
         [Area("Administration")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var currency = await _context.Currency.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Currency.Remove(currency);
+            var currency = await _context.Currencies.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Currencies.Remove(currency);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
         private bool CurrencyExists(int id)
         {
-            return _context.Currency.Any(e => e.Id == id);
+            return _context.Currencies.Any(e => e.Id == id);
         }
     }
 }

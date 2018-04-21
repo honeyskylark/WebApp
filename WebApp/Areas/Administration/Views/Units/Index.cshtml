@@ -1,5 +1,5 @@
 @model IEnumerable<WebApp.Models.Unit>
-@using WebApp.Areas.Administration.Services
+@using WebApp.Services
 @{
     ViewBag.Title = ResourceProvider.GetResource("Units");
 }
@@ -13,7 +13,7 @@
         <table class="table">
             <tr>
                 <th>@ResourceProvider.GetResource("Unit")</th>
-                <th>@ResourceProvider.GetResource("Action")</th>
+                <th>@ResourceProvider.GetResource("Actions")</th>
             </tr>
             @foreach (var unit in Model)
             {

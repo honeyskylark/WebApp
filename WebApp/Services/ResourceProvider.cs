@@ -1,7 +1,7 @@
 ﻿using System;
-using WebApp.Areas.Administration.Constants;
+using WebApp.Constants;
 
-namespace WebApp.Areas.Administration.Services
+namespace WebApp.Services
 {
     public static class ResourceProvider
     {
@@ -9,11 +9,15 @@ namespace WebApp.Areas.Administration.Services
         {          
             if (key != String.Empty)
             {
-                string value = "";
+                string value = String.Empty;
                 ViewConstants.Resources.TryGetValue(key, out value);
+                if (value == null || value == String.Empty)
+                {
+                    return "Key not found";
+                }
                 return value;
             }
-            return "Key Not Found";
+            return "Key is empty";
         }
     }
 }

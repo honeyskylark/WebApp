@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebApp.Models.Deal>
+@using WebApp.Services
+@{
+    ViewBag.Title = ResourceProvider.GetResource("Deals");
+
+    var processes = ViewBag.Processes;
+    var count = ViewBag.Count;
+
+}
+<br />
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var process in processes)
+         {
+            <div class="col-md-3">
+                <div class="panel panel-primary" style="border-radius: 6px;">
+                    <div class="panel-heading" style="border-radius: 4px;"><div class="row"><div class="col-md-10"><span class="glyphicon glyphicon-fire"></span> @process.Title</div><div class="col-md-2"> <a asp-controller="Processes" asp-area="eCore" asp-action="Edit" asp-route-id="@process.Id"><span class="glyphicon glyphicon-cog" style="color:white"></span></a></div></div></div>
+                    <ul class="list-group">
+                   
+                        @foreach (var deal in Model)
+                         {
+                            if (deal.Process.Id == process.Id)
+                            {
+                                <li class="list-group-item">
+                                    <a asp-controller="Deals" asp-area="eCore" asp-action="Details" asp-route-id="@deal.Id" style="font-size: 13px; font-weight:normal;">                                        
+                                        @if((deal.Title != null)||(deal.Description != null))
+                                        {
+                                            <p><b>@deal.Title</b></p>
+                                            <p>@deal.Description</p>
+                                            <hr style="border: 0.5px solid #808080; margin-top: 0px; margin-bottom: 5px;" />
+                                        }                                       
+                                        <p><span class="glyphicon glyphicon-flag"></span> @deal.Contact.FirstName @deal.Contact.LastName @deal.Contact.Patronymic</p>
+                                        <p><span class="glyphicon glyphicon-phone-alt"></span> @deal.Contact.Phone</p>
+                                        <p><span class="glyphicon glyphicon-share-alt"></span> @deal.From.Name</p>
+                                        <p><span class="glyphicon glyphicon-shopping-cart"></span> @deal.Product.Name</p>
+                                        <hr style="border: 0.5px solid #808080; margin-top: 0px; margin-bottom: 5px;" />
+                                        <p>Назначено на:</p>
+                                        <p><span class="glyphicon glyphicon-user"></span> @deal.User.FirstName @deal.User.Patronymic @deal.User.LastName</p>
+                                    </a>
+                                    @if(process.Order != 4)
+                                    {
+                                        <hr style="border: 0.5px solid #808080; margin-top: 0px; margin-bottom: 5px;" />
+                                         <a asp-controller="Deals" asp-area="eCore" asp-action="Forward" asp-route-id="@deal.Id" style="font-size: 13px; font-weight:normal;"><span class="glyphicon glyphicon-chevron-right"></span> Продвинуть дальше</a>
+                                    }     
+                                </li>
+                            }                     
+                         }
+                         <li class="list-group-item">
+                            <em><a asp-controller="Deals" asp-area="eCore" asp-action="Create" asp-route-id="@process.Id" style="font-size: 13px; font-weight:normal;"><span class="glyphicon glyphicon-plus"></span> @ResourceProvider.GetResource("Add")</a></em>                                
+                         </li> 
+                    </ul>
+                </div>
+            </div>                           
+         }
+        @if(count < 4)
+         {
+
+             <a class="btn btn-primary btn-lg" asp-controller="Processes" asp-area="eCore" asp-action="Create" role="button">@ResourceProvider.GetResource("Add")</a>
+         }
+       
+    </div>
+</div>

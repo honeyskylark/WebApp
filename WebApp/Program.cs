@@ -10,13 +10,14 @@ namespace WebApp
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
             var host = BuildWebHost(args);
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                Initialize.DatabaseInitialize(services);               
+                Initialize.DatabaseInitialize(services);
             }
+            BuildWebHost(args).Run();
+            
         }   
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)

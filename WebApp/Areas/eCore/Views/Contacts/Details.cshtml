@@ -1,0 +1,50 @@
+@model WebApp.Models.Contact
+@using WebApp.Services
+@{
+    ViewBag.Title = $"{Model.FirstName} {Model.Patronymic}  {Model.LastName}";
+}
+<br />
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a asp-area="" asp-action="Index" asp-controller="Home">@ResourceProvider.GetResource("Home")</a></li>
+        <li><a asp-area="eCore" asp-action="Index" asp-controller="Contacts">@ResourceProvider.GetResource("Contacts")</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><span class="glyphicon glyphicon-eye-open"></span> @ResourceProvider.GetResource("ExtendedInfo")</div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("FirstName") </th>
+                        <td>@Model.FirstName</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("Patronymic") </th>
+                        <td>@Model.Patronymic</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("LastName") </th>
+                        <td>@Model.LastName</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("Phone") </th>
+                        <td>@Model.Phone</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("Address") </th>
+                        <td>@Model.Address</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("Company") </th>
+                        <td>@Model.Company.Name</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-group">
+            <a asp-action="Edit" class="btn btn-primary btn-lg btn-block" asp-route-id="@Model.Id">@ResourceProvider.GetResource("Edit")</a>
+        </div>
+        <a asp-area="eCore" asp-action="Index" asp-controller="Contacts" class="btn btn-primary btn-lg btn-block" role="button">@ResourceProvider.GetResource("Back")</a>
+    </div>
+</div>

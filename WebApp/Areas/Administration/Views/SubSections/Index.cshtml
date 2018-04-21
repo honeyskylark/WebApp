@@ -1,5 +1,5 @@
 @model IEnumerable<WebApp.Models.SubSection>
-@using WebApp.Areas.Administration.Services
+@using WebApp.Services
 @{
     ViewBag.Title = ResourceProvider.GetResource("SubSections");
 }
@@ -14,7 +14,7 @@
             <tr>
                 <th>@ResourceProvider.GetResource("SubSection")</th>
                 <th>@ResourceProvider.GetResource("Section")</th>
-                <th>@ResourceProvider.GetResource("Action")</th>
+                <th>@ResourceProvider.GetResource("Actions")</th>
             </tr>
             @foreach (var subsec in Model)
             {

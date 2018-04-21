@@ -1,0 +1,67 @@
+@model WebApp.Models.Deal
+@using WebApp.Services
+@{
+    ViewBag.Title = Model.Product.Name;
+}
+<br />
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a asp-area="" asp-action="Index" asp-controller="Home">@ResourceProvider.GetResource("Home")</a></li>
+        <li><a asp-area="eCore" asp-action="Index" asp-controller="Deals">@ResourceProvider.GetResource("Deals")</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><span class="glyphicon glyphicon-eye-open"></span> @ResourceProvider.GetResource("ExtendedInfo")</div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("Title")</th>
+                        <td>@Model.Title</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("Description")</th>
+                        <td>@Model.Description</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("Process")</th>
+                        <td>@Model.Process.Title</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("From")</th>
+                        <td>@Model.From.Name</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("Contact")</th>
+                        <td>
+                            <p><b>@ResourceProvider.GetResource("Contact")</b> @Model.Contact.FirstName @Model.Contact.LastName @Model.Contact.Patronymic</p>
+                            <p><b>@ResourceProvider.GetResource("Address")</b> @Model.Contact.Address</p>
+                            <p><b>@ResourceProvider.GetResource("Phone")</b> @Model.Contact.Phone</p>
+                            <p><b>@ResourceProvider.GetResource("Company")</b> @Model.Contact.Company.Name</p>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("Product")</th>
+                        <td>
+                            <p><b>@ResourceProvider.GetResource("Catalog")</b> @Model.Product.Catalog.Name</p>
+                            <p><b>@ResourceProvider.GetResource("Product")</b> @Model.Product.Name</p>
+                            <p><b>@ResourceProvider.GetResource("Price")</b> @Model.Product.Price @Model.Product.Currency.Name</p>
+                            <p><b>@ResourceProvider.GetResource("Unit")</b> @Model.Product.Unit.Name</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">@ResourceProvider.GetResource("User")</th>
+                        <td>@Model.User.FirstName @Model.User.LastName</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-group">
+            <a asp-action="Edit" class="btn btn-primary btn-lg btn-block" asp-route-id="@Model.Id">@ResourceProvider.GetResource("Edit")</a>
+            <a asp-action="Delete" class="btn btn-primary btn-lg btn-block" asp-route-id="@Model.Id">@ResourceProvider.GetResource("Delete")</a>
+        </div>
+        <a asp-area="eCore" asp-action="Index" asp-controller="Deals" class="btn btn-primary btn-lg btn-block" role="button">@ResourceProvider.GetResource("Back")</a>
+    </div>
+</div>
+<br />
