@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.IO;
 using WebApp.Seed;
 
@@ -14,7 +15,7 @@ namespace WebApp
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                Initialize.DatabaseInitialize(services);
+                Initialize.Launch(services);
             }
             BuildWebHost(args).Run();
             

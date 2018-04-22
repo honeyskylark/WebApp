@@ -5,7 +5,6 @@
 
     var processes = ViewBag.Processes;
     var count = ViewBag.Count;
-
 }
 <br />
 <div class="container-fluid">
@@ -40,7 +39,7 @@
                                     @if(process.Order != 4)
                                     {
                                         <hr style="border: 0.5px solid #808080; margin-top: 0px; margin-bottom: 5px;" />
-                                         <a asp-controller="Deals" asp-area="eCore" asp-action="Forward" asp-route-id="@deal.Id" style="font-size: 13px; font-weight:normal;"><span class="glyphicon glyphicon-chevron-right"></span> Продвинуть дальше</a>
+                                        <a asp-controller="Deals" asp-area="eCore" asp-action="Forward" asp-route-id="@deal.Id" style="font-size: 13px; font-weight:normal;"><span class="glyphicon glyphicon-chevron-right"></span> @ResourceProvider.GetResource("Forward")</a>
                                     }     
                                 </li>
                             }                     

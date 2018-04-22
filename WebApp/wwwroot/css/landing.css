@@ -203,38 +203,16 @@ h2 {
 .large {
     font-size: 25px;
 }
-
-#about h1.about-title::after {
-    content: '';
-    width: 93px;
-    height: 5px;
-    background: #DFDCFB;
-    position: relative;
-    bottom: 0;
-    left: 46%;
-    display: block;
-}
 /*--About US-------------------------------------*/
 #why {
     padding: 90px 0;
     background: #21201e;
 }
 
-    #why h1 {
-        color: #fff;
-        padding-bottom: 80px;
-    }
-
-        #why h1.why-title::after {
-            content: '';
-            width: 93px;
-            height: 5px;
-            background: #DFDCFB;
-            position: relative;
-            bottom: 0;
-            left: 46%;
-            display: block;
-        }
+#why h1 {
+    color: #fff;
+    padding-bottom: 80px;
+}
 /*--services--*/
 
 .services-left {
@@ -263,24 +241,24 @@ span.glyphicon {
     padding: 1.74em;
 }
 
-    .services-right h4 {
-        font-size: 1.5em;
-        color: #fff;
-        margin-bottom: 0.5em;
-    }
+.services-right h4 {
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 0.5em;
+}
 
-    .services-right p {
-        color: #fff;
-        text-align: left;
-    }
+.services-right p {
+    color: #fff;
+    text-align: left;
+}
 
-    .services-right b {
-        color: #988AEE;
-    }
+.services-right b {
+    color: #988AEE;
+}
 
-    .services-right li {
-        color: #fff;
-    }
+.services-right li {
+    color: #fff;
+}
 
 .services-grids:hover .services-left {
     background: none;
@@ -308,12 +286,12 @@ span.glyphicon {
     padding-top: 40px;
 }
 
-    .contact-form p {
-        width: 60%;
-        margin: 1.5em auto 3em;
-        text-align: center;
-        color: #828689;
-    }
+.contact-form p {
+    width: 60%;
+    margin: 1.5em auto 3em;
+    text-align: center;
+    color: #828689;
+}
 
 .contact input[type="text"] {
     width: 31.0%;
@@ -361,22 +339,10 @@ span.glyphicon {
     -moz-transition: 0.5s all;
 }
 
-    .contact input[type="submit"]:hover {
-        background: none;
-        color: #7B68EE;
-    }
-
-#contact h1.title::after {
-    content: '';
-    width: 93px;
-    height: 5px;
-    background: #DFDCFB;
-    position: relative;
-    bottom: 0;
-    left: 46%;
-    display: block;
+.contact input[type="submit"]:hover {
+    background: none;
+    color: #7B68EE;
 }
-
 /*--//contact--*/
 
 
@@ -397,28 +363,28 @@ span.glyphicon {
     text-align: center;
 }
 
-    .map-right h4 {
-        font-size: 2em;
-        color: #555;
-        font-weight: 400;
-    }
+.map-right h4 {
+    font-size: 2em;
+    color: #555;
+    font-weight: 400;
+}
 
-    .map-right p {
-        color: #828689;
-        font-size: 1em;
-        letter-spacing: 1px;
-        font-weight: 100;
-        margin: 1em 0 2em;
-    }
+.map-right p {
+    color: #828689;
+    font-size: 1em;
+    letter-spacing: 1px;
+    font-weight: 100;
+    margin: 1em 0 2em;
+}
 
-        .map-right p a {
-            color: #828689;
-            font-size: 1.1em;
-        }
+.map-right p a {
+    color: #828689;
+    font-size: 1.1em;
+}
 
-            .map-right p a:hover {
-                color: #000;
-            }
+.map-right p a:hover {
+    color: #000;
+}
 
 .map .social-icons {
     margin-top: 2.1em;
@@ -442,17 +408,17 @@ span.glyphicon {
     transition: 0.5s;
 }
 
-    #contacts-nav .navbar-nav > li > a:hover {
-        transition: 0.5s;
-        background: #21201e;
-        color: #fff;
-    }
+#contacts-nav .navbar-nav > li > a:hover {
+    transition: 0.5s;
+    background: #21201e;
+    color: #fff;
+}
 
-    #contacts-nav .navbar-nav > li > a:focus {
-        transition: 0.5s;
-        background: #21201e;
-        color: #fff;
-    }
+#contacts-nav .navbar-nav > li > a:focus {
+    transition: 0.5s;
+    background: #21201e;
+    color: #fff;
+}
 
 #contacts-nav .nav {
     display: inline-block;
@@ -470,20 +436,20 @@ span.glyphicon {
     background: #000;
 }
 
-    #footer p {
-        color: #fff;
-        font-size: 0.8em;
-    }
+#footer p {
+    color: #fff;
+    font-size: 0.8em;
+}
 
-        #footer p a {
-            color: #fff;
-            font-size: 1em;
-        }
+#footer p a {
+    color: #fff;
+    font-size: 1em;
+}
 
-            #footer p a:hover {
-                color: #988AEE;
-                font-size: 1em;
-            }
+#footer p a:hover {
+    color: #988AEE;
+    font-size: 1em;
+}
 /*--//footer--*/
 
 

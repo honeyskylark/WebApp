@@ -18,6 +18,8 @@ namespace WebApp.Models
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<From> Froms { get; set; }
+        public DbSet<Resource> Resources { get; set; }
+        public DbSet<Language> Languages { get; set; }
 
         public WebAppContext(DbContextOptions<WebAppContext> options) : base(options)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using WebApp.Constants;
+using WebApp.Contexts;
 
 namespace WebApp.Services
 {
@@ -9,11 +10,13 @@ namespace WebApp.Services
         {          
             if (key != String.Empty)
             {
+                var instance = ResourceContext.GetInstance();
+
                 string value = String.Empty;
-                ViewConstants.Resources.TryGetValue(key, out value);
+                instance.Resources.TryGetValue(key, out value);
                 if (value == null || value == String.Empty)
                 {
-                    return "Key not found";
+                    return $"[{key}]";
                 }
                 return value;
             }

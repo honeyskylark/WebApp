@@ -2,12 +2,16 @@
 using System;
 using System.Linq;
 using WebApp.Models;
+using WebApp.Contexts;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.Seed
 {
     public class Initialize
     {
-        public static void DatabaseInitialize(IServiceProvider serviceProvider)
+        public static void Launch(IServiceProvider serviceProvider)
         {
             string adminRoleName = "Administrator";
             string employeeRoleName = "Employee";
@@ -37,6 +41,30 @@ namespace WebApp.Seed
 
             using (WebAppContext db = serviceProvider.GetRequiredService<WebAppContext>())
             {
+                var globalLanguage = "Russian";
+                Language language = db.Languages.FirstOrDefault(u => u.Name == globalLanguage);
+
+                if (language == null)
+                {
+                    db.Languages.Add(new Language
+                    {
+                        Name = globalLanguage
+                    });
+                    db.SaveChanges();
+                    language = db.Languages.FirstOrDefault(u => u.Name == globalLanguage);
+                }
+
+                var resources = db.Resources.Where(u => u.LanguageId == language.Id);
+                Dictionary<string, string> result = new Dictionary<string, string> { };
+
+                foreach (var resource in resources)
+                {
+                    result.Add(resource.Key, resource.Value);
+                }
+
+                var instance = ResourceContext.GetInstance();
+                instance.Resources = result;
+
                 Role adminRole = db.Roles.FirstOrDefault(x => x.Name == adminRoleName);
                 Role userRole = db.Roles.FirstOrDefault(x => x.Name == customerRoleName);
                 Role employeeRole = db.Roles.FirstOrDefault(x => x.Name == employeeRoleName);
@@ -101,7 +129,7 @@ namespace WebApp.Seed
                     db.SaveChanges();
                 }
                 SubSection subSection = db.SubSections.FirstOrDefault(u => u.Name == subSectionName);
-                if(subSection == null)
+                if (subSection == null)
                 {
                     Section sectionLegacy = db.Sections.FirstOrDefault(u => u.Name == sectionName);
                     db.SubSections.Add(new SubSection
@@ -125,7 +153,7 @@ namespace WebApp.Seed
                 }
 
                 Currency currency = db.Currencies.FirstOrDefault(u => u.Name == currencyName);
-                if(currency == null)
+                if (currency == null)
                 {
                     db.Currencies.Add(new Currency
                     {
@@ -144,7 +172,7 @@ namespace WebApp.Seed
                 }
 
                 Product product = db.Products.FirstOrDefault(u => u.Name == productName);
-                if(product == null)
+                if (product == null)
                 {
                     Catalog catalogLegacy = db.Catalogs.FirstOrDefault(u => u.Name == catalogName);
                     Currency currencyLegacy = db.Currencies.FirstOrDefault(u => u.Name == currencyName);
@@ -156,13 +184,13 @@ namespace WebApp.Seed
                         Description = "Пилорама является усовершенствованным продолжением пилорамы MB-2000, в конструкцию пилорамы были внесены улучшения, которые позволили увеличить производительность на 10%.",
                         Price = "280000",
                         CurrencyId = currencyLegacy.Id,
-                        UnitId = unitLegacy.Id,                        
+                        UnitId = unitLegacy.Id,
                     });
                     db.SaveChanges();
                 }
 
                 Process process = db.Processes.FirstOrDefault(u => u.Title == processName);
-                if(process == null)
+                if (process == null)
                 {
                     db.Processes.Add(new Process
                     {
@@ -173,13 +201,13 @@ namespace WebApp.Seed
                 }
 
                 Company company = db.Companies.FirstOrDefault(u => u.Name == companyName);
-                if(company == null)
+                if (company == null)
                 {
                     db.Companies.Add(new Company
                     {
                         Name = companyName,
                         Address = "г. Москва, ул.Ленинградская, д. 1",
-                        Phone = "+7 (777) 777-77-77"                      
+                        Phone = "+7 (777) 777-77-77"
                     });
 
                     db.SaveChanges();
@@ -193,7 +221,7 @@ namespace WebApp.Seed
                         FirstName = contactName,
                         LastName = "Иванов",
                         Patronymic = "Иванович",
-                        Address = "г. Москва, ул.Ленинградская, д. 1", 
+                        Address = "г. Москва, ул.Ленинградская, д. 1",
                         Phone = "+7 (777) 777-77-77",
                         CompanyId = companyLegacy.Id
                     });
@@ -227,12 +255,13 @@ namespace WebApp.Seed
                         Description = "Тестовый заказ при инициализации базы данных.",
                         ContactId = contactLegacy.Id,
                         ProductId = productLegacy.Id,
-                        FromId = fromLegacy.Id,     
+                        FromId = fromLegacy.Id,
                         UserId = employeeLegacy.Id
                     });
                     db.SaveChanges();
                 }
             }
+                          
         }
     }
 }

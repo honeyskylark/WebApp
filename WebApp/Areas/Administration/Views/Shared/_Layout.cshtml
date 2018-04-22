@@ -52,22 +52,24 @@
                                     </ul>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span> Стандарты <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span> @ResourceProvider.GetResource("Standards") <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a asp-action="Index" asp-controller="Currencies"><span class="glyphicon glyphicon-piggy-bank"></span> @ResourceProvider.GetResource("Currencies")</a></li>
                                         <li><a asp-action="Index" asp-controller="Units"><span class="glyphicon glyphicon-apple"></span> @ResourceProvider.GetResource("Units")</a></li>
-                                        <li><a asp-action="Index" asp-controller="Froms"><span class="glyphicon glyphicon-share-alt"></span> Заказал</a></li>
+                                        <li><a asp-action="Index" asp-controller="Froms"><span class="glyphicon glyphicon-share-alt"></span> @ResourceProvider.GetResource("From")</a></li>
+                                        <li><a asp-action="Index" asp-controller="Resources"><span class="glyphicon glyphicon-text-size"></span> @ResourceProvider.GetResource("Resources")</a></li>
+                                        <li><a asp-action="Index" asp-controller="Languages"><span class="glyphicon glyphicon-globe"></span> @ResourceProvider.GetResource("Languages")</a></li>
                                     </ul>
                                 </li>
-                                <li><a asp-action="Index" asp-controller="Deals" asp-area="eCore"><span class="glyphicon glyphicon-cloud"></span> eCore</a></li>
+                                <li><a asp-action="Index" asp-controller="Deals" asp-area="eCore"><span class="glyphicon glyphicon-cloud"></span> @ResourceProvider.GetResource("eCore")</a></li>
                             }                           
                         }
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Личный Кабинет <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> @ResourceProvider.GetResource("PersonalAccount") <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a asp-action="Logout" asp-controller="Account" asp-area=""><span class="glyphicon glyphicon-user"></span> Выйти [Администратор: @User.Identity.Name]</a></li>
+                                <li><a asp-action="Logout" asp-controller="Account" asp-area=""><span class="glyphicon glyphicon-user"></span> @ResourceProvider.GetResource("Logout"): @User.Identity.Name</a></li>
                             </ul>
                         </li>
                     </ul>

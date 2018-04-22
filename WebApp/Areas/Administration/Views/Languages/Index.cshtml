@@ -1,0 +1,34 @@
+@model IEnumerable<WebApp.Models.Language>
+@using WebApp.Services
+@{
+    ViewBag.Title = ResourceProvider.GetResource("Languages");
+}
+<ol class="breadcrumb">
+    <li><a asp-area="" asp-action="Index" asp-controller="Home">@ResourceProvider.GetResource("Home")</a></li>
+    <li class="active">@ViewBag.Title</li>
+</ol>
+<div class="container-fluid">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><span class="glyphicon glyphicon-link"></span> @ResourceProvider.GetResource("Languages")</div>
+        <table class="table">
+            <tr>
+                <th>@ResourceProvider.GetResource("Language")</th>
+                <th>@ResourceProvider.GetResource("Actions")</th>
+            </tr>
+            @foreach (var Language in Model)
+            {
+                <tr>
+                    <td>@Language.Name</td>
+                    <td>
+                        <a asp-area="Administration" asp-controller="Languages" asp-action="Details" asp-route-id="@Language.Id"><span class="glyphicon glyphicon-eye-open"></span></a> |
+                        <a asp-area="Administration" asp-controller="Languages" asp-action="Edit" asp-route-id="@Language.Id"><span class="glyphicon glyphicon-pencil"></span></a> |
+                        <a asp-area="Administration" asp-controller="Languages" asp-action="Delete" asp-route-id="@Language.Id"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="form-group">
+        <a class="btn btn-primary btn-lg btn-block" asp-controller="Languages" asp-area="Administration" asp-action="Create" role="button">@ResourceProvider.GetResource("Add")</a>
+    </div>
+</div>

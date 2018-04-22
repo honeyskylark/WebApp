@@ -42,18 +42,20 @@
                                         <li><a asp-action="Index" asp-controller="Companies"><span class="glyphicon glyphicon-briefcase"></span> @ResourceProvider.GetResource("Companies")</a></li>  
                                     </ul>
                                 </li> 
-                                <li><a asp-action="Index" asp-controller="Tasks"><span class="glyphicon glyphicon-calendar"></span> Задачи</a></li>
+                                <li><a asp-action="Index" asp-controller="Tasks"><span class="glyphicon glyphicon-calendar"></span> @ResourceProvider.GetResource("Tasks")</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cloud"></span> CMS <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cloud"></span> @ResourceProvider.GetResource("CMS") <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Sections"><span class="glyphicon glyphicon-th-large"></span> Разделы</a></li>
-                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="SubSections"><span class="glyphicon glyphicon-th"></span> Подразделы</a></li>
-                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Products"><span class="glyphicon glyphicon-object-align-right"></span> Товары</a></li>
-                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Users"><span class="glyphicon glyphicon-user"></span> Пользователи</a></li>
-                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Roles"><span class="glyphicon glyphicon-sunglasses"></span> Роли</a></li>
-                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Currencies"><span class="glyphicon glyphicon-piggy-bank"></span> Валюты</a></li>
-                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Units"><span class="glyphicon glyphicon-apple"></span> Единицы</a></li>
-                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Froms"><span class="glyphicon glyphicon-share-alt"></span> Заказал</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Sections"><span class="glyphicon glyphicon-th-large"></span> @ResourceProvider.GetResource("Sections")</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="SubSections"><span class="glyphicon glyphicon-th"></span> @ResourceProvider.GetResource("SubSections")</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Products"><span class="glyphicon glyphicon-object-align-right"></span> @ResourceProvider.GetResource("Products")</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Users"><span class="glyphicon glyphicon-user"></span> @ResourceProvider.GetResource("Users")</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Roles"><span class="glyphicon glyphicon-sunglasses"></span> @ResourceProvider.GetResource("Roles")</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Currencies"><span class="glyphicon glyphicon-piggy-bank"></span> @ResourceProvider.GetResource("Currencies")</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Units"><span class="glyphicon glyphicon-apple"></span> @ResourceProvider.GetResource("Units")</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Froms"><span class="glyphicon glyphicon-share-alt"></span> @ResourceProvider.GetResource("Froms")</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Resources"><span class="glyphicon glyphicon-text-size"></span> @ResourceProvider.GetResource("Resources")</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Languages"><span class="glyphicon glyphicon-globe"></span> @ResourceProvider.GetResource("Languages")</a></li>
                                     </ul>
                                 </li>                              
                             }
@@ -88,18 +90,18 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Личный Кабинет <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> @ResourceProvider.GetResource("PersonalAccount") <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a asp-action="Logout" asp-controller="Account" asp-area=""><span class="glyphicon glyphicon-user"></span> Выйти [Администратор: @User.Identity.Name]</a></li>
+                                <li><a asp-action="Logout" asp-controller="Account" asp-area=""><span class="glyphicon glyphicon-user"></span> @ResourceProvider.GetResource("Logout"): @User.Identity.Name</a></li>
                             </ul>
                         </li>
                     </ul>
-            </div>
+                </div>
             </div>
         </nav>
-        <div class="container-fluid">
-            @RenderBody()
-        </div>
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
     </div>
     <div class="footer">
         <div class="container">

@@ -1,0 +1,37 @@
+@model IEnumerable<WebApp.Models.Resource>
+@using WebApp.Services
+@{
+    ViewBag.Title = ResourceProvider.GetResource("Resources");
+}
+<ol class="breadcrumb">
+    <li><a asp-area="" asp-action="Index" asp-controller="Home">@ResourceProvider.GetResource("Home")</a></li>
+    <li class="active">@ViewBag.Title</li>
+</ol>
+<div class="container-fluid">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><span class="glyphicon glyphicon-link"></span> @ResourceProvider.GetResource("Resources")</div>
+        <table class="table">
+            <tr>
+                <th>@ResourceProvider.GetResource("Key")</th>
+                <th>@ResourceProvider.GetResource("Value")</th>
+                <th>@ResourceProvider.GetResource("Language")</th>
+            </tr>
+            @foreach (var Resource in Model)
+            {
+            <tr>
+                <td>@Resource.Key</td>
+                <td>@Resource.Value</td>
+                <td>@Resource.Language.Name</td>
+                <td>
+                    <a asp-area="Administration" asp-controller="Resources" asp-action="Details" asp-route-id="@Resource.Id"><span class="glyphicon glyphicon-eye-open"></span></a> |
+                    <a asp-area="Administration" asp-controller="Resources" asp-action="Edit" asp-route-id="@Resource.Id"><span class="glyphicon glyphicon-pencil"></span></a> |
+                    <a asp-area="Administration" asp-controller="Resources" asp-action="Delete" asp-route-id="@Resource.Id"><span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+            </tr>
+            }
+        </table>
+    </div>
+    <div class="form-group">
+        <a class="btn btn-primary btn-lg btn-block" asp-controller="Resources" asp-area="Administration" asp-action="Create" role="button">@ResourceProvider.GetResource("Add")</a>
+    </div>
+</div>
