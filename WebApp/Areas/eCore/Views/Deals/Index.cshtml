@@ -20,7 +20,7 @@
                          {
                             if (deal.Process.Id == process.Id)
                             {
-                                <li class="list-group-item">
+                                <li class="list-group-item">                              
                                     <a asp-controller="Deals" asp-area="eCore" asp-action="Details" asp-route-id="@deal.Id" style="font-size: 13px; font-weight:normal;">                                        
                                         @if((deal.Title != null)||(deal.Description != null))
                                         {
@@ -35,7 +35,7 @@
                                         <hr style="border: 0.5px solid #808080; margin-top: 0px; margin-bottom: 5px;" />
                                         <p>Назначено на:</p>
                                         <p><span class="glyphicon glyphicon-user"></span> @deal.User.FirstName @deal.User.Patronymic @deal.User.LastName</p>
-                                    </a>
+                                    </a>                                                                      
                                     @if(process.Order != 4)
                                     {
                                         <hr style="border: 0.5px solid #808080; margin-top: 0px; margin-bottom: 5px;" />

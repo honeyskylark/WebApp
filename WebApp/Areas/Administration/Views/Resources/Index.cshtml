@@ -1,5 +1,7 @@
-@model IEnumerable<WebApp.Models.Resource>
+@using WebApp.ViewModels.Areas.Administration.Resources;
+@model IndexViewModel
 @using WebApp.Services
+@addTagHelper "*, WebApp"
 @{
     ViewBag.Title = ResourceProvider.GetResource("Resources");
 }
@@ -16,21 +18,22 @@
                 <th>@ResourceProvider.GetResource("Value")</th>
                 <th>@ResourceProvider.GetResource("Language")</th>
             </tr>
-            @foreach (var Resource in Model)
+            @foreach (var Resource in Model.Resources)
             {
-            <tr>
-                <td>@Resource.Key</td>
-                <td>@Resource.Value</td>
-                <td>@Resource.Language.Name</td>
-                <td>
-                    <a asp-area="Administration" asp-controller="Resources" asp-action="Details" asp-route-id="@Resource.Id"><span class="glyphicon glyphicon-eye-open"></span></a> |
-                    <a asp-area="Administration" asp-controller="Resources" asp-action="Edit" asp-route-id="@Resource.Id"><span class="glyphicon glyphicon-pencil"></span></a> |
-                    <a asp-area="Administration" asp-controller="Resources" asp-action="Delete" asp-route-id="@Resource.Id"><span class="glyphicon glyphicon-trash"></span></a>
-                </td>
-            </tr>
+                <tr>
+                    <td>@Resource.Key</td>
+                    <td>@Resource.Value</td>
+                    <td>@Resource.Language.Name</td>
+                    <td>
+                        <a asp-area="Administration" asp-controller="Resources" asp-action="Details" asp-route-id="@Resource.Id"><span class="glyphicon glyphicon-eye-open"></span></a> |
+                        <a asp-area="Administration" asp-controller="Resources" asp-action="Edit" asp-route-id="@Resource.Id"><span class="glyphicon glyphicon-pencil"></span></a> |
+                        <a asp-area="Administration" asp-controller="Resources" asp-action="Delete" asp-route-id="@Resource.Id"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
             }
         </table>
     </div>
+    <page-link page-model="Model.PageViewModel" page-action="Index"></page-link>
     <div class="form-group">
         <a class="btn btn-primary btn-lg btn-block" asp-controller="Resources" asp-area="Administration" asp-action="Create" role="button">@ResourceProvider.GetResource("Add")</a>
     </div>

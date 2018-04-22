@@ -34,7 +34,7 @@
                     <tr>
                         <th scope="row">@ResourceProvider.GetResource("Contact")</th>
                         <td>
-                            <p><b>@ResourceProvider.GetResource("Contact")</b> @Model.Contact.FirstName @Model.Contact.LastName @Model.Contact.Patronymic</p>
+                            <p><b>@ResourceProvider.GetResource("Clients")</b> @Model.Contact.FirstName @Model.Contact.LastName @Model.Contact.Patronymic</p>
                             <p><b>@ResourceProvider.GetResource("Address")</b> @Model.Contact.Address</p>
                             <p><b>@ResourceProvider.GetResource("Phone")</b> @Model.Contact.Phone</p>
                             <p><b>@ResourceProvider.GetResource("Company")</b> @Model.Contact.Company.Name</p>
@@ -46,8 +46,7 @@
                         <td>
                             <p><b>@ResourceProvider.GetResource("Catalog")</b> @Model.Product.Catalog.Name</p>
                             <p><b>@ResourceProvider.GetResource("Product")</b> @Model.Product.Name</p>
-                            <p><b>@ResourceProvider.GetResource("Price")</b> @Model.Product.Price @Model.Product.Currency.Name</p>
-                            <p><b>@ResourceProvider.GetResource("Unit")</b> @Model.Product.Unit.Name</p>
+                            <p><b>@ResourceProvider.GetResource("Price")</b> @Model.Product.Price @Model.Product.Currency.Name \ @Model.Product.Unit.Name</p>
                         </td>
                     </tr>
                     <tr>

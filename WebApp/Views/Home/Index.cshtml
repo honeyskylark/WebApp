@@ -1,6 +1,6 @@
-﻿@{
+﻿@model IEnumerable<WebApp.Models.Product>
+@{
     ViewData["Title"] = "Компания Пиломир";
-
 }
 <section id="header">
     <div class="navbar-left">
@@ -10,10 +10,10 @@
 
     <div class="collapse navbar-collapse navbar-right">
         <ul class="nav navbar-nav">
-            <li><a href="index.html" class="active">Каталог</a></li>
-            <li><a href="#about" class="scroll">О компании</a></li>
+            <li><a href="#about" class="scroll">Услуги</a></li>
             <li><a href="#why" class="scroll">Почему мы</a></li>
             <li><a href="#contacts" class="scroll">Контакты</a></li>
+            <li><a href="#catalog" class="active">Каталог</a></li>
             <li><a href="#contact" class="scroll">Связаться</a></li>
             @{if (!User.Identity.IsAuthenticated)
                 {
@@ -24,7 +24,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">eCore <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a asp-area="eCore" asp-action="Index" asp-controller="Deals">CRM</a></li>                                       
+                            <li><a asp-area="eCore" asp-action="Index" asp-controller="Deals">CRM</a></li>
                             <li><a asp-area="" asp-action="Logout" asp-controller="Account">Выход</a></li>
                         </ul>
                     </li>
@@ -56,23 +56,40 @@
 </section>
 <section id="about">
     <div class="container">
-        <h1 class="about-title">о компании</h1>
+        <h1 class="about-title">Наши услуги</h1>
         <p class="large">Мы рады приветствовать вас на сайте нашей компании</p>
-        <p>
-            Компания «Пиломир» имеет большой опыт поставок ленточнопильного инструмента
-            и оборудования для самых разных отраслей промышленности. Мы предлагаем только
-            проверенные ленточные пилы европейских фирм-производителей. Собственный цех по
-            ремонту и заточке режущего инструмента укомплектован лучшим импортным оборудованием.
-            Для сварки и заточки ленточных пил используются самые современные технологии и оборудование,
-            на котором работает специально обученный опытный персонал. Главными приоритетами в
-            работе компании являются высокое качество предоставляемых услуг и выполнение заказов любой
-            сложности за минимальные сроки.
-        </p>
+        <br />
+        <div class="row">
+            <div class="col-md-6 services-grids">
+                <div class="services-left">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                </div>
+                <div class="services-right">
+                    <h4>Продажа</h4>
+                    <p>
+                        Мы предлагаем только проверенные ленточные пилы европейских фирм-производителей.
+                    </p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="col-md-6 services-grids">
+                <div class="services-left">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </div>
+                <div class="services-right">
+                    <h4>Ремонт</h4>
+                    <p>
+                        Собственный цех по ремонту и заточке режущего инструмента укомплектован лучшим импортным оборудованием.
+                    </p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
     </div>
 </section>
 <section id="why">
     <div class="container">
-        <h1 class="why-title">почему мы</h1>
+        <h1>почему мы</h1>
         <div class="services-info">
             <div class="col-md-6 services-grids">
                 <div class="services-left">
@@ -195,6 +212,48 @@
         <div class="clearfix"> </div>
     </div>
 </section>
+
+
+<!--Catalog -->
+<section id="catalog" class="catalog">
+    <h1>каталог</h1>
+    <p class="large">Ознакомьтесь с нашими товарами</p>
+    <br />
+    <div class="container-fluid">
+        <div class="section-tabs">
+            <div class="row">
+                @foreach (var product in Model)
+                {
+                    <div class="col-md-3">
+                        <div class="thumbnail">
+                            <img src="http://via.placeholder.com/342x300">
+                            <div class="caption">
+                                <h3>@product.Name</h3>
+                                @if (product.Description.Length <= 140)
+                                {
+                                    <p>@product.Description</p>
+
+                                }
+                                else
+                                {
+                                    <p>@product.Description.Substring(0, 140)...</p>
+                                }
+                                <h3>@product.Price @product.Currency.Name \ @product.Unit.Name</h3>
+                                <hr />
+                                <p>
+                                    <a href="#" class="btn btn-primary" role="button">Заказать</a>
+                                    <a href="#" class="btn btn-default" role="button">Подробнее</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--//Catalog -->
 <!--contactUS -->
 <section id="contact" class="contact">
     <div class="team-info">

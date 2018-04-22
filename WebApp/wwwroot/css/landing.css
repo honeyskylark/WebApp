@@ -18,9 +18,12 @@ a {
     color: #828689;
 }
 
-    a:hover {
-        color: #828689;
-    }
+a:hover {
+    color: #828689;
+}
+.thumbnail {
+    height: 650px;
+}
 
 img {
     max-width: 100%;
@@ -195,10 +198,59 @@ h2 {
     border-bottom: 2px solid #21201e;
 }
 
-    #about h2, p {
-        text-align: center;
-        color: #828689;
-    }
+#about h2, p {
+    text-align: center;
+    color: #828689;
+}
+#about .services-left {
+    float: left;
+    width: 30%;
+    background: #6a7079;
+    text-align: center;
+    padding: 2.98em 0;
+    border: 2px solid #6a7079;
+    -webkit-transition: .5s all;
+    -moz-transition: .5s all;
+    transition: .5s all;
+    -o-transition: .5s all;
+    -ms-transition: .5s all;
+}
+#about .services-right h4 {
+    font-size: 1.5em;
+    color: #828689;
+    margin-bottom: 0.5em;
+}
+#about .services-right p {
+    color: #828689;
+    text-align: left;
+}
+#about .services-right {
+    float: right;
+    width: 70%;
+    border: 1px solid #6a7079;
+    padding: 1.74em;
+}
+
+#about .services-right b {
+    color: #988AEE;
+}
+
+#about .services-right li {
+    color: #fff;
+}
+
+#about .services-grids:hover .services-left {
+    background: none;
+}
+
+#about .services-grids:hover span.glyphicon {
+    color: #6a7079;
+}
+
+#about .services-info.services-row2 {
+    margin-top: 3.5em;
+}
+
 
 .large {
     font-size: 25px;
@@ -273,8 +325,34 @@ span.glyphicon {
 }
 /*--//services--*/
 
-/*--contact--*/
+.about-extended-info {
+    border: 2px solid #21201e;
+    padding: 11px;
+    border-radius: 15px;
+}
+/*--About US-------------------------------------*/
 
+/*--Catalog--*/
+#catalog {
+    padding: 90px 0;
+    background: #21201e;
+}
+
+#catalog h1 {
+    color: #fff;
+}
+
+#catalog .section-tabs {
+    border: 30px solid #fff;
+    border-radius: 2px;
+    background: #fff;
+}
+
+
+/*--//Catalog--*/
+
+
+/*--contact--*/
 #contact {
     padding: 90px 0;
     border-bottom: 2px solid #21201e;
@@ -474,6 +552,13 @@ span.glyphicon {
     .services-left {
         padding: 3.95em 0;
     }
+    #about .services {
+        padding: 5em 0;
+    }
+
+    #about .services-left {
+        padding: 3.95em 0;
+    }
 }
 
 @media(max-width:1199px) {
@@ -484,10 +569,20 @@ span.glyphicon {
     .services-right {
         height: 230px;
     }
+    #about .services-left {
+        padding: 5em 0;
+    }
+
+    #about .services-right {
+        height: 230px;
+    }
 }
 
 @media(max-width:991px) {
     .services {
+        padding: 3.5em 0;
+    }
+    #about .services {
         padding: 3.5em 0;
     }
 
@@ -502,6 +597,17 @@ span.glyphicon {
     }
 
     .services-right {
+        float: right;
+        width: 70%;
+        padding: 0.8em 1em;
+    }
+    #about .services-grids {
+        float: left;
+        width: 50%;
+        padding: 0 0.5em;
+    }
+
+    #about .services-right {
         float: right;
         width: 70%;
         padding: 0.8em 1em;
@@ -524,6 +630,18 @@ span.glyphicon {
     }
 
     .services-right {
+        padding: 0.95em 1em;
+    }
+
+    #about .services {
+        padding: 3em 0;
+    }
+
+    #about .services-right h4 {
+        font-size: 1.3em;
+    }
+
+    #about .services-right {
         padding: 0.95em 1em;
     }
 
@@ -574,11 +692,29 @@ span.glyphicon {
         padding: 2.3em 0;
     }
 
+    #about .services {
+        padding: 2em 0;
+    }
+
+    #about .services-grids {
+        float: none;
+        width: 100%;
+        padding: 0;
+        margin-bottom: 1em;
+    }
+
+    #about .services-left {
+        padding: 2.3em 0;
+    }
+
     span.glyphicon {
         font-size: 2.5em;
     }
 
     .services-info.services-row2 {
+        margin-top: 0;
+    }
+    #about .services-info.services-row2 {
         margin-top: 0;
     }
 }
@@ -594,6 +730,20 @@ span.glyphicon {
     }
 
     .services-left {
+        padding: 2.1em 0;
+        width: 25%;
+    }
+
+    #about .services-right h4 {
+        font-size: 1.2em;
+        margin-bottom: 0.3em;
+    }
+
+    #about .services-right {
+        width: 75%;
+    }
+
+    #about .services-left {
         padding: 2.1em 0;
         width: 25%;
     }

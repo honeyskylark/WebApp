@@ -10,20 +10,21 @@ body {
 a {
     color: #000000;
     text-decoration: none;
-    transition: background 0.5s;
+    transition: all 0.3s linear;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: rgba(108, 108, 108, 0.80);    
-}
-.badge{
-    background-color: var(--color5);
 }
 
 a:hover, a:focus {
     color: rgba(108, 108, 108, 0.80);
     text-decoration: none;
-    
+
 }
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    border-top: 1px solid rgba(108, 108, 108, 0.80);
+}
+
 /* Text -------------------------------------- */
 .important-text{
     color: tomato;
@@ -130,13 +131,13 @@ a:hover, a:focus {
 
 .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
     color: #fff;
-    background-color: var(--color5);
-    border-color: var(--color5);
+    background-color: rgba(108, 108, 108, 0.80);
+    border-color: rgba(108, 108, 108, 0.80);
 }
 .btn-primary:focus, .btn-primary.focus {
     color: #fff;
-    background-color: var(--color5);
-    border-color: var(--color5);
+    background-color: rgba(108, 108, 108, 0.80);
+    border-color: rgba(108, 108, 108, 0.80);
 }
 .btn-primary {
     background-color: rgba(255, 255, 255, 0.80);
@@ -149,8 +150,7 @@ a:hover, a:focus {
 }
 .btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus {
     color: #fff;
-    background-color: var(--color1);
-    border-color: var(--color1);
+
 }
 
 /* Panel-------------------------------------- */
@@ -166,8 +166,25 @@ a:hover, a:focus {
     background-color: rgba(255, 255, 255, 0.80);
     border-radius: 5px;
 }
-.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
-    border-top-color: var(--blackColor);
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+    margin-top: -5px;
+}
+
+.pagination>li>a, .pagination>li>span{
+    color: #333;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+    background-color: rgba(33, 32, 30, 0.8);
+    border-color: rgba(33, 32, 30, 0.8);
+}
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover{
+    color: #333
 }
 
 /* Footer --------------------------------------- */

@@ -26,7 +26,7 @@ namespace WebApp.Seed
             string sectionName = "Оборудование";
             string subSectionName = "Деревообрабатывающее";
             string catalogName = "Пилорамы ленточные горизонтальные";
-            string productName = "Горизонтальная ленточная пилорама МВ-2000М";
+            string productName = "Ленточная пилорама МВ-2000М";
 
             string currencyName = "RUB";
             string unitName = "шт";

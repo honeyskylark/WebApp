@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Contexts;
 using WebApp.Models;
+using WebApp.ViewModels;
+using WebApp.ViewModels.Areas.Administration.Resources;
 
 namespace WebApp.Areas.Administration.Controllers
 {
@@ -23,10 +25,23 @@ namespace WebApp.Areas.Administration.Controllers
         }
 
         // GET: Administration/Resources
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            var webAppContext = _context.Resources.Include(r => r.Language);
-            return View(await webAppContext.ToListAsync());
+            int pageSize = 7;
+
+            var resources = _context.Resources.Include(r => r.Language);
+            var count = await resources.CountAsync();
+            var items = await resources.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
+
+            IndexViewModel viewModel = new IndexViewModel
+            {
+                PageViewModel = pageViewModel,
+                Resources = items
+            };
+
+            return View(viewModel);
         }
 
         // GET: Administration/Resources/Details/5
