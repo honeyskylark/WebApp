@@ -1,0 +1,52 @@
+﻿@model WebApp.Models.Feedback
+@using WebApp.Services
+@{
+    ViewBag.Title = ResourceProvider.GetResource("Adding");
+}
+<br />
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a asp-area="" asp-action="Index" asp-controller="Home">@ResourceProvider.GetResource("Home")</a></li>
+        <li><a asp-area="eCore" asp-action="Index" asp-controller="Feedbacks">@ResourceProvider.GetResource("Feedbacks")</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+    <div class="container-fluid">
+        <form asp-action="Create">
+            <div class="panel panel-primary">
+                <div class="panel-heading">@ResourceProvider.GetResource("Adding")</div>
+                <div class="panel-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label">@ResourceProvider.GetResource("FirstName")</label>
+                        <input type="text" asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label">@ResourceProvider.GetResource("Email")</label>
+                        <input type="text" asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Phone" class="control-label">@ResourceProvider.GetResource("Phone")</label>
+                        <input type="text" asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Message" class="control-label">@ResourceProvider.GetResource("Message")</label>
+                        <textarea rows="4" type="text" asp-for="Message" class="form-control"></textarea>
+                        <span asp-for="Message" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ProductId" class="control-label">@ResourceProvider.GetResource("Product")</label>
+                        <select asp-for="ProductId" class="form-control" asp-items="ViewBag.ProductId"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">@ResourceProvider.GetResource("Add")</button>
+            </div>
+            <a asp-action="Index" asp-area="eCore" asp-controller="Feedbacks" class="btn btn-primary btn-lg btn-block" role="button">@ResourceProvider.GetResource("Back")</a>
+        </form>
+    </div>
+</div>
+  

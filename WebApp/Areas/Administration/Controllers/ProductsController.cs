@@ -7,16 +7,18 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
+using WebApp.Contexts;
 
 namespace WebApp.Areas.Administration.Controllers
 {
     public class ProductsController : Controller
     {
         private readonly WebAppContext _context;
-
+        private ProductContext _instance;
         public ProductsController(WebAppContext context)
         {
-            _context = context;    
+            _context = context;
+            _instance = ProductContext.GetInstance();
         }
 
         // GET: Products
@@ -73,6 +75,7 @@ namespace WebApp.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
+                _instance.Products.Add(product);
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -120,6 +123,8 @@ namespace WebApp.Areas.Administration.Controllers
             {
                 try
                 {
+                    _instance.Products.Remove(product);
+                    _instance.Products.Add(product);
                     _context.Update(product);
                     await _context.SaveChangesAsync();
                 }
@@ -173,6 +178,7 @@ namespace WebApp.Areas.Administration.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var product = await _context.Products.SingleOrDefaultAsync(m => m.Id == id);
+
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");

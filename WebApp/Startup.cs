@@ -8,6 +8,9 @@ using WebApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.Hosting;
+using WebApp.Services.Background.OnInit;
+using WebApp.Services.Background;
 
 namespace WebApp
 {
@@ -32,6 +35,11 @@ namespace WebApp
                   options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Index");
               });
             services.AddMvc();
+
+            // Register Hosted Services
+            services.AddSingleton<IHostedService, ResourceInitService>();
+            services.AddSingleton<IHostedService, ProductsInitService>();
+            services.AddSingleton<IHostedService, DatabaseSeedService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

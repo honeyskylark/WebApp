@@ -11,23 +11,24 @@ using WebApp.Models;
 namespace WebApp.Areas.eCore.Controllers
 {
     [Area("eCore")]
-    public class CompaniesController : Controller
+    public class FeedbacksController : Controller
     {
         private readonly WebAppContext _context;
 
-        public CompaniesController(WebAppContext context)
+        public FeedbacksController(WebAppContext context)
         {
             _context = context;
         }
 
-        // GET: eCore/Companies
+        // GET: eCore/Feedbacks
         [Authorize(Roles = "Administrator, Employee")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Companies.ToListAsync());
+            var webAppContext = _context.Feedbacks.Include(f => f.Product);
+            return View(await webAppContext.ToListAsync());
         }
 
-        // GET: eCore/Companies/Details/5
+        // GET: eCore/Feedbacks/Details/5
         [Authorize(Roles = "Administrator, Employee")]
         public async Task<IActionResult> Details(int? id)
         {
@@ -36,41 +37,47 @@ namespace WebApp.Areas.eCore.Controllers
                 return NotFound();
             }
 
-            var company = await _context.Companies
+            var feedback = await _context.Feedbacks
+                .Include(f => f.Product)
+                .Include(f => f.Product.Catalog)
+                .Include(d => d.Product.Currency)
+                .Include(d => d.Product.Unit)
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (company == null)
+            if (feedback == null)
             {
                 return NotFound();
             }
 
-            return View(company);
+            return View(feedback);
         }
 
-        // GET: eCore/Companies/Create
+        // GET: eCore/Feedbacks/Create
         [Authorize(Roles = "Administrator, Employee")]
         public IActionResult Create()
         {
+            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name");
             return View();
         }
 
-        // POST: eCore/Companies/Create
+        // POST: eCore/Feedbacks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Employee")]
-        public async Task<IActionResult> Create([Bind("Id,Name,Phone,Address")] Company company)
+        public async Task<IActionResult> Create([Bind("Id,Name,Email,Phone,Message,ProductId")] Feedback feedback)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(company);
+                _context.Add(feedback);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(company);
+            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name", feedback.ProductId);
+            return View(feedback);
         }
 
-        // GET: eCore/Companies/Edit/5
+        // GET: eCore/Feedbacks/Edit/5
         [Authorize(Roles = "Administrator, Employee")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -79,23 +86,24 @@ namespace WebApp.Areas.eCore.Controllers
                 return NotFound();
             }
 
-            var company = await _context.Companies.SingleOrDefaultAsync(m => m.Id == id);
-            if (company == null)
+            var feedback = await _context.Feedbacks.SingleOrDefaultAsync(m => m.Id == id);
+            if (feedback == null)
             {
                 return NotFound();
             }
-            return View(company);
+            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name", feedback.ProductId);
+            return View(feedback);
         }
 
-        // POST: eCore/Companies/Edit/5
+        // POST: eCore/Feedbacks/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Employee")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Phone,Address")] Company company)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Email,Phone,Message,ProductId")] Feedback feedback)
         {
-            if (id != company.Id)
+            if (id != feedback.Id)
             {
                 return NotFound();
             }
@@ -104,12 +112,12 @@ namespace WebApp.Areas.eCore.Controllers
             {
                 try
                 {
-                    _context.Update(company);
+                    _context.Update(feedback);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CompanyExists(company.Id))
+                    if (!FeedbackExists(feedback.Id))
                     {
                         return NotFound();
                     }
@@ -120,10 +128,11 @@ namespace WebApp.Areas.eCore.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(company);
+            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name", feedback.ProductId);
+            return View(feedback);
         }
 
-        // GET: eCore/Companies/Delete/5
+        // GET: eCore/Feedbacks/Delete/5
         [Authorize(Roles = "Administrator, Employee")]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -132,31 +141,32 @@ namespace WebApp.Areas.eCore.Controllers
                 return NotFound();
             }
 
-            var company = await _context.Companies
+            var feedback = await _context.Feedbacks
+                .Include(f => f.Product)
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (company == null)
+            if (feedback == null)
             {
                 return NotFound();
             }
 
-            return View(company);
+            return View(feedback);
         }
 
-        // POST: eCore/Companies/Delete/5
+        // POST: eCore/Feedbacks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Employee")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var company = await _context.Companies.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Companies.Remove(company);
+            var feedback = await _context.Feedbacks.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Feedbacks.Remove(feedback);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CompanyExists(int id)
+        private bool FeedbackExists(int id)
         {
-            return _context.Companies.Any(e => e.Id == id);
+            return _context.Feedbacks.Any(e => e.Id == id);
         }
     }
 }

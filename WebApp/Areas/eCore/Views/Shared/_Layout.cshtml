@@ -38,11 +38,11 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-phone-alt"></span> @ResourceProvider.GetResource("Contacts") <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a asp-action="Index" asp-controller="Contacts"><span class="glyphicon glyphicon-flag"></span> @ResourceProvider.GetResource("Clients")</a></li>
-                                        <li><a asp-action="Index" asp-controller="Companies"><span class="glyphicon glyphicon-briefcase"></span> @ResourceProvider.GetResource("Companies")</a></li>  
+                                        <li><a asp-area="eCore" asp-action="Index" asp-controller="Contacts"><span class="glyphicon glyphicon-flag"></span> @ResourceProvider.GetResource("Clients")</a></li>
+                                        <li><a asp-area="eCore" asp-action="Index" asp-controller="Companies"><span class="glyphicon glyphicon-briefcase"></span> @ResourceProvider.GetResource("Companies")</a></li>  
                                     </ul>
                                 </li> 
-                                @*<li><a asp-action="Index" asp-controller="Tasks"><span class="glyphicon glyphicon-calendar"></span> @ResourceProvider.GetResource("Tasks")</a></li>*@
+                                <li><a asp-area="eCore" asp-action="Index" asp-controller="Feedbacks"><span class="glyphicon glyphicon-calendar"></span> @ResourceProvider.GetResource("Feedback")</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cloud"></span> @ResourceProvider.GetResource("CMS") <span class="caret"></span></a>
                                     <ul class="dropdown-menu">

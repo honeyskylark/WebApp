@@ -22,7 +22,7 @@ a:hover {
     color: #828689;
 }
 .thumbnail {
-    height: 650px;
+    border: 3px solid #ddd;
 }
 
 img {
@@ -171,6 +171,7 @@ h2 {
     background: #988AEE;
     padding: 8px 18px;
     font-size: 18px;
+    margin-top: 5px;
 }
 
 .btn-primary:hover {
@@ -184,6 +185,7 @@ h2 {
     color: #fff;
     padding: 8px 18px;
     font-size: 18px;
+    margin-top: 5px;
 }
 
 .btn-default:hover {
@@ -197,9 +199,13 @@ h2 {
     padding: 90px 0;
     border-bottom: 2px solid #21201e;
 }
+#about h3 {
+    height: 78px;
+        
+}
 
 #about h2, p {
-    text-align: center;
+    text-align: left;
     color: #828689;
 }
 #about .services-left {
@@ -347,7 +353,12 @@ span.glyphicon {
     border-radius: 2px;
     background: #fff;
 }
-
+#catalog .product-name{
+     height: 78px;
+}
+#catalog .product-description {
+    height: 168px;
+}
 
 /*--//Catalog--*/
 
@@ -372,7 +383,6 @@ span.glyphicon {
 }
 
 .contact input[type="text"] {
-    width: 31.0%;
     color: #828689;
     float: left;
     background: none;
@@ -383,10 +393,7 @@ span.glyphicon {
     border: solid 1px #828689;
     -webkit-appearance: none;
     display: inline-block;
-}
-
-.contact input.email {
-    margin: 0 2em;
+    width:100%;
 }
 
 .contact textarea {
@@ -534,6 +541,35 @@ span.glyphicon {
 
 
 /*-Media--------------------------*/
+
+
+@media(max-width:1024px){
+    #catalog .product-name {
+        height: 100px;
+    }
+
+    #catalog .product-description {
+        height: 232px;
+    }
+    #catalog .product-price{
+        height:52px;
+    }
+}
+
+@media(max-width:768px) {
+    #catalog .product-name {
+        height: auto;
+    }
+
+    #catalog .product-description {
+        height: auto;
+    }
+    #catalog .product-price {
+        height: auto;
+    }
+}
+
+
 @media only screen and (max-width: 600px) {
     .section-center {
         max-width: 320px;
@@ -541,6 +577,11 @@ span.glyphicon {
 
     .btn {
         margin: 5px 5px;
+    }
+}
+@media(max-width:480px) {
+    .services-left {
+        height: 230px;
     }
 }
 
@@ -586,14 +627,10 @@ span.glyphicon {
         padding: 3.5em 0;
     }
 
-    .contact input[type="text"] {
-        width: 31.3%;
-    }
-
     .services-grids {
         float: left;
-        width: 50%;
-        padding: 0 0.5em;
+        width: 100%;
+        padding: 0.5em 0.5em;
     }
 
     .services-right {
@@ -603,20 +640,14 @@ span.glyphicon {
     }
     #about .services-grids {
         float: left;
-        width: 50%;
-        padding: 0 0.5em;
+        width: 100%;
+        padding: 0.5em 0.5em;
     }
 
     #about .services-right {
         float: right;
         width: 70%;
         padding: 0.8em 1em;
-    }
-}
-
-@media(max-width:765px) {
-    .contact input[type="text"] {
-        width: 30.6%;
     }
 }
 
@@ -645,14 +676,8 @@ span.glyphicon {
         padding: 0.95em 1em;
     }
 
-    .contact input.email {
-        margin: 0 1em;
-    }
-
     .contact input[type="text"] {
-        width: 31.7%;
         padding: .6em 1em;
-        margin-bottom: 1em;
     }
 
     .contact input[type="submit"] {
@@ -669,10 +694,6 @@ span.glyphicon {
     #contact input[type="text"] {
         width: 100%;
         font-size: .9em;
-    }
-
-    #contact input.email {
-        margin: 0;
     }
 }
 
@@ -776,7 +797,7 @@ span.glyphicon {
     #login .panel-primary > .panel-heading {
         color: #fff;
         background-color: rgba(33, 32, 30, 0.8);
-        border-color: background: transparent;;
+        background: rgba(33, 32, 30, 0.8);
     }
 
     #login .active a {

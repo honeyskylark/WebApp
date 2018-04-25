@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Models;
 using Microsoft.EntityFrameworkCore;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
@@ -14,12 +15,26 @@ namespace WebApp.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public IActionResult Index()
         {
-            ViewBag.SubSections =  await _context.SubSections.ToListAsync();
-            var webAppContext = _context.Products.Include(p => p.Catalog).Include(p => p.Currency).Include(p => p.Unit);
-
-            return View(await webAppContext.ToListAsync());
+            ViewBag.Products = _context.Products.Include(p => p.Catalog).Include(p => p.Currency).Include(p => p.Unit);
+            return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(FeedbackViewModel model)
+        {
+            Feedback feedback = new Feedback {
+                Email = model.Email,
+                Message = model.Message,
+                Name = model.Name,
+                Phone = model.Phone,                
+            };          
+            _context.Add(feedback);
+            await _context.SaveChangesAsync();
+            return View();
+        }
+
     }
 }

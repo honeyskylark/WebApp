@@ -20,6 +20,7 @@ namespace WebApp.Models
         public DbSet<From> Froms { get; set; }
         public DbSet<Resource> Resources { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
 
         public WebAppContext(DbContextOptions<WebAppContext> options) : base(options)
         {

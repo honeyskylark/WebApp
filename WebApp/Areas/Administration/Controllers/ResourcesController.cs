@@ -79,10 +79,13 @@ namespace WebApp.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-                _instance.Resources.Add(resource.Key, resource.Value);
-                _context.Add(resource);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if(!_instance.Resources.ContainsKey(resource.Key))
+                {
+                    _instance.Resources.Add(resource.Key, resource.Value);
+                    _context.Add(resource);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }               
             }
             ViewData["LanguageId"] = new SelectList(_context.Languages, "Id", "Name", resource.LanguageId);
             return View(resource);
