@@ -3,32 +3,36 @@
 @{
     ViewBag.Title = ResourceProvider.GetResource("Companies");
 }
-<br />
-<div class="container-fluid">
-    <div class="panel panel-primary">
-        <div class="panel-heading"><span class="glyphicon glyphicon-link"></span> @ViewBag.Title</div>
+<div class="container-fluid crud-container">
+    <ol class="breadcrumb wow slideInDown">
+        <li><a asp-area="eCore" asp-action="Index" asp-controller="Deals">@ResourceProvider.GetResource("Deals")</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+    <div class="panel panel-primary wow slideInDown">
+        <div class="panel-heading"><i class="fa fa-database fa-lg"></i> @ViewBag.Title</div>
         <table class="table">
             <tr>
                 <th>@ResourceProvider.GetResource("Company")</th>
                 <th>@ResourceProvider.GetResource("Phone")</th>
+                <th>@ResourceProvider.GetResource("Address")</th>
                 <th>@ResourceProvider.GetResource("Actions")</th>
             </tr>
             @foreach (var Company in Model)
             {
-            <tr>
-                <td>@Company.Name</td>
-                <td>@Company.Phone</td>
-                <td>@Company.Address</td>
-                <td>
-                    <a asp-area="eCore" asp-controller="Companies" asp-action="Details" asp-route-id="@Company.Id"><span class="glyphicon glyphicon-eye-open"></span></a> |
-                    <a asp-area="eCore" asp-controller="Companies" asp-action="Edit" asp-route-id="@Company.Id"><span class="glyphicon glyphicon-pencil"></span></a> |
-                    <a asp-area="eCore" asp-controller="Companies" asp-action="Delete" asp-route-id="@Company.Id"><span class="glyphicon glyphicon-trash"></span></a>
-                </td>
-            </tr>
+                <tr>
+                    <td>@Company.Name</td>
+                    <td>@Company.Phone</td>
+                    <td>@Company.Address</td>
+                    <td>
+                        <a asp-area="eCore" asp-controller="Companies" asp-action="Details" asp-route-id="@Company.Id"><span class="glyphicon glyphicon-eye-open"></span></a> |
+                        <a asp-area="eCore" asp-controller="Companies" asp-action="Edit" asp-route-id="@Company.Id"><span class="glyphicon glyphicon-pencil"></span></a> |
+                        <a asp-area="eCore" asp-controller="Companies" asp-action="Delete" asp-route-id="@Company.Id"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
             }
         </table>
     </div>
     <div class="form-group">
-        <a asp-controller="Companies" asp-area="eCore" asp-action="Create"  class="btn btn-primary btn-lg btn-block" role="button">@ResourceProvider.GetResource("Add")</a>
+        <a asp-controller="Companies" asp-area="eCore" asp-action="Create" class="btn btn-primary btn-lg btn-block wow slideInUp" role="button">@ResourceProvider.GetResource("Add")</a>
     </div>
 </div>

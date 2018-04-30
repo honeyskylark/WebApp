@@ -13,51 +13,62 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/animate.css" />
+    <script src="~/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
 </head>
 <body>
+    <div id="page-preloader" class="preloader">
+        <div class="loader"></div>
+    </div>
     <div class="wrap">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
+        <section class="eCore-section">
+        <img src="~/img/Admin-Background.jpg">
+            <nav class="navbar navbar-default wow slideInDown">
+                <div class="container-fluid">
 
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
 
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-left">
-                        @{
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-left">
+                            @{
                             if (User.IsInRole("Administrator"))
-                            {                         
+                            {
                                 <li><a asp-area="" asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> @ResourceProvider.GetResource("Home")</a></li>
-                                <li><a asp-area="eCore" asp-controller="Deals" asp-action="Index"><span class="glyphicon glyphicon-fire"></span> @ResourceProvider.GetResource("Deals")</a></li>                                
+                                <li><a asp-area="eCore" asp-controller="Deals" asp-action="Index"><i class="fa fa-handshake-o fa-lg"></i> @ResourceProvider.GetResource("Deals")</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-phone-alt"></span> @ResourceProvider.GetResource("Contacts") <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-group fa-lg"></i> @ResourceProvider.GetResource("Contacts") <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a asp-area="eCore" asp-action="Index" asp-controller="Contacts"><span class="glyphicon glyphicon-flag"></span> @ResourceProvider.GetResource("Clients")</a></li>
-                                        <li><a asp-area="eCore" asp-action="Index" asp-controller="Companies"><span class="glyphicon glyphicon-briefcase"></span> @ResourceProvider.GetResource("Companies")</a></li>  
+                                        <li><a asp-area="eCore" asp-action="Index" asp-controller="Contacts"><i class="fa fa-drivers-license-o fa-lg"></i> @ResourceProvider.GetResource("Clients")</a></li>
+                                        <li><a asp-area="eCore" asp-action="Index" asp-controller="Companies"><span class="glyphicon glyphicon-briefcase"></span> @ResourceProvider.GetResource("Companies")</a></li>
                                     </ul>
-                                </li> 
-                                <li><a asp-area="eCore" asp-action="Index" asp-controller="Feedbacks"><span class="glyphicon glyphicon-calendar"></span> @ResourceProvider.GetResource("Feedback")</a></li>
+                                </li>
+                                <li><a asp-area="eCore" asp-action="Index" asp-controller="Feedbacks"><i class="fa fa-exchange fa-lg"></i> @ResourceProvider.GetResource("Feedback")</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cloud"></span> @ResourceProvider.GetResource("CMS") <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-sitemap fa-lg"></i> @ResourceProvider.GetResource("CMS") <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a asp-area="Administration" asp-action="Index" asp-controller="Sections"><span class="glyphicon glyphicon-th-large"></span> @ResourceProvider.GetResource("Sections")</a></li>
                                         <li><a asp-area="Administration" asp-action="Index" asp-controller="SubSections"><span class="glyphicon glyphicon-th"></span> @ResourceProvider.GetResource("SubSections")</a></li>
-                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Products"><span class="glyphicon glyphicon-object-align-right"></span> @ResourceProvider.GetResource("Products")</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Catalogs"><span class="glyphicon glyphicon-th-list"></span> @ResourceProvider.GetResource("Catalogs")</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Products"><span class="glyphicon glyphicon-shopping-cart"></span> @ResourceProvider.GetResource("Products")</a></li>
                                         <li><a asp-area="Administration" asp-action="Index" asp-controller="Users"><span class="glyphicon glyphicon-user"></span> @ResourceProvider.GetResource("Users")</a></li>
                                         <li><a asp-area="Administration" asp-action="Index" asp-controller="Roles"><span class="glyphicon glyphicon-sunglasses"></span> @ResourceProvider.GetResource("Roles")</a></li>
                                         <li><a asp-area="Administration" asp-action="Index" asp-controller="Currencies"><span class="glyphicon glyphicon-piggy-bank"></span> @ResourceProvider.GetResource("Currencies")</a></li>
                                         <li><a asp-area="Administration" asp-action="Index" asp-controller="Units"><span class="glyphicon glyphicon-apple"></span> @ResourceProvider.GetResource("Units")</a></li>
                                         <li><a asp-area="Administration" asp-action="Index" asp-controller="Froms"><span class="glyphicon glyphicon-share-alt"></span> @ResourceProvider.GetResource("Froms")</a></li>
                                         <li><a asp-area="Administration" asp-action="Index" asp-controller="Resources"><span class="glyphicon glyphicon-text-size"></span> @ResourceProvider.GetResource("Resources")</a></li>
-                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Languages"><span class="glyphicon glyphicon-globe"></span> @ResourceProvider.GetResource("Languages")</a></li>
+                                        <li><a asp-area="Administration" asp-action="Index" asp-controller="Languages"><i class="fa fa-language fa-lg"></i> @ResourceProvider.GetResource("Languages")</a></li>
                                     </ul>
-                                </li>                              
+                                </li>
                             }
                             else if (User.IsInRole("Employee"))
                             {
@@ -73,7 +84,6 @@
                                 <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
                                 <li><a asp-action="Logout" asp-controller="Login"><span class="glyphicon glyphicon-user"></span> Выйти [Клиент: @User.Identity.Name]</a></li>
                             }
-
                             else
                             {
                                 <li><a asp-action="Index" asp-controller="Home"><span class="glyphicon glyphicon-home"></span> Главная</a></li>
@@ -86,27 +96,29 @@
                                     </ul>
                                 </li>
                             }
-                        }
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> @ResourceProvider.GetResource("PersonalAccount") <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a asp-action="Logout" asp-controller="Account" asp-area=""><span class="glyphicon glyphicon-user"></span> @ResourceProvider.GetResource("Logout"): @User.Identity.Name</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                            }
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> @ResourceProvider.GetResource("PersonalAccount") <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a asp-action="Logout" asp-controller="Account" asp-area=""><span class="glyphicon glyphicon-user"></span> @ResourceProvider.GetResource("Logout"): @User.Identity.Name</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+            </nav>
+            <div class="container-fluid">
+                @RenderBody()
             </div>
-        </nav>
-    <div class="container-fluid">
-        @RenderBody()
-    </div>
-    </div>
+        </section>
+    </div>   
     <div class="footer">
         <div class="container">
             <p>© 2018 Компания «Пиломир». Все права защищены | Design by <a href="https://github.com/honeyskylark" class="a-footer">Asylgareev Rustam</a></p>
         </div>
     </div>
+    <script src="~/js/loader.js"></script>
 </body>
 </html>

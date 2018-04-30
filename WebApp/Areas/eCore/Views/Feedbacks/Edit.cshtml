@@ -3,10 +3,9 @@
 @{
     ViewBag.Title = ResourceProvider.GetResource("Editing");
 }
-<br />
-<div class="container">
+<div class="container crud-container">
     <ol class="breadcrumb">
-        <li><a asp-area="" asp-action="Index" asp-controller="Home">@ResourceProvider.GetResource("Home")</a></li>
+        <li><a asp-area="eCore" asp-action="Index" asp-controller="Deals">@ResourceProvider.GetResource("Deals")</a></li>
         <li><a asp-area="eCore" asp-action="Index" asp-controller="Feedbacks">@ResourceProvider.GetResource("Clients")</a></li>
         <li class="active">@ViewBag.Title</li>
     </ol>

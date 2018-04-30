@@ -2,10 +2,57 @@
 body {
     height: 100%;
     font-family: Montserrat, sans-serif;
-    background: url(/img/Admin-Background.jpg) center;
     background-size: cover;
     background-repeat: repeat;
 }
+
+/* Fixed background image -------------------------------------- */
+.eCore-section img {
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+    height: -webkit-fill-available;
+}
+/* //Fixed background image -------------------------------------- */
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(33, 32, 30, 0.5);
+    z-index: 2;
+    transition: 1s all;
+    opacity: 1;
+    visibility: visible;
+}
+.loader {
+    width: 75px;
+    height: 75px;
+    border: 10px solid white;
+    border-radius: 50%;
+    border-top-color: rgba(33, 32, 30, 0.9);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: 1s spin infinite linear;
+}
+
+.done {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes spin{
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
 /* Links -------------------------------------- */
 a {
     color: #000000;
@@ -38,14 +85,6 @@ a:hover, a:focus {
 
 }
 
-
-/* Products -------------------------------------- */
-.products {
-    background-color: snow;
-    border: 1px solid var(--color5);
-    border-radius: 15px;
-}
-
 /* Navbar -------------------------------------- */
 .nav li > form > button.logout {
     padding: 15px;
@@ -70,8 +109,7 @@ a:hover, a:focus {
     outline: none;
 }
 .navbar {
-    border-color: var(--color5);
-    border: 1px solid var(--blackColor);
+    border: 1px solid;
     margin: 0;
 }
 
@@ -116,8 +154,12 @@ a:hover, a:focus {
 }
 /* Well-------------------------------------- */
 .well {
-    background-color: var(--color1);
     border-radius: 20px;
+}
+
+.crud-container {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 /* Buttons-------------------------------------- */
 .btn {
@@ -229,6 +271,7 @@ a:hover, a:focus {
     height: auto;
     margin: 0 auto -60px;
     padding: 0 0 60px;
+    z-index: 5;
 }
 
 .wrap > .container {
@@ -267,16 +310,6 @@ a:hover, a:focus {
 .second {
     background-color: snow;
     border-radius: 15px;
-}
-.container .jumbotron {
-    text-align: center;
-    border-color: var(--color5);
-    border: 1px solid var(--color5);
-    border-radius: 15px;
-}
-.jumbotron > hr {
-    border-color: var(--color2);
-    border-radius:50px;
 }
 .jumbotron .btn {
     font-size: 21px;
@@ -338,8 +371,7 @@ hr {
     margin-top: 20px;
     margin-bottom: 20px;
     border: 0;
-    border-top: 5px solid var(--blackColor);
-    border-color: var(--color2);
+    border-top: 5px solid;
     border-radius: 20px;
 
 }
@@ -364,16 +396,11 @@ img {
     max-width: 100%;
     height: auto;
 }
-.three-columns {
-    border: 2px solid var(--blackColor);
-    border-radius: 10px;
-}
-
 
 
 /* Валидация ошибок */
 .field-validation-error {
-    color: #337ab7;
+    color: red;
 }
 
 .field-validation-valid {
@@ -381,7 +408,7 @@ img {
 }
 
 input.input-validation-error {
-    border: 2px solid #337ab7;
+    border: 2px solid red;
 }
 
 input[type="checkbox"].input-validation-error {

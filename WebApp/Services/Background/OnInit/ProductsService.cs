@@ -12,12 +12,12 @@ using WebApp.Extensions;
 using WebApp.Models;
 namespace WebApp.Services.Background.OnInit
 {
-    public class ProductsInitService : IHostedService
+    public class ProductsService : IHostedService
     {
         private readonly IServiceProvider _provider;
         public IConfiguration _configuration { get; }
         private ProductContext _instance;
-        public ProductsInitService(IServiceProvider serviceProvider, IConfiguration configuration)
+        public ProductsService(IServiceProvider serviceProvider, IConfiguration configuration)
         {
             _provider = serviceProvider;
             _configuration = configuration;

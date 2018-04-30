@@ -37,8 +37,8 @@ namespace WebApp
             services.AddMvc();
 
             // Register Hosted Services
-            services.AddSingleton<IHostedService, ResourceInitService>();
-            services.AddSingleton<IHostedService, ProductsInitService>();
+            services.AddSingleton<IHostedService, ResourcesService>();
+            services.AddSingleton<IHostedService, ProductsService>();
             services.AddSingleton<IHostedService, DatabaseSeedService>();
         }
 

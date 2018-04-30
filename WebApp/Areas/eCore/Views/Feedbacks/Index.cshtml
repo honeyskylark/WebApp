@@ -3,13 +3,16 @@
 @{
     ViewBag.Title = ResourceProvider.GetResource("Feedback");
 }
-<br />
-<div class="container-fluid">
+<div class="container-fluid crud-container">
+    <ol class="breadcrumb wow slideInDown">
+        <li><a asp-area="eCore" asp-action="Index" asp-controller="Deals">@ResourceProvider.GetResource("Deals")</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
     <div class="row">
         @foreach (var Feedback in Model)
         {
             <div class="col-md-3">
-                <div class="panel panel-primary">
+                <div class="panel panel-primary wow slideInDown">
                     <div class="panel-heading">
                         <div style="text-align:right">
                             <a style="color:#fff" asp-area="eCore" asp-controller="Feedbacks" asp-action="Details" asp-route-id="@Feedback.Id"><span class="glyphicon glyphicon-eye-open"></span></a> |
@@ -23,13 +26,13 @@
                         <p><span class="glyphicon glyphicon-phone-alt"></span> @Feedback.Phone</p>
                         <hr style="border: 0.5px solid #808080; margin-top: 0px; margin-bottom: 5px;" />
                         <p><span class="glyphicon glyphicon-share-alt"></span> @Feedback.Message</p>
-                        @if(@Feedback.Product != null)
+                        @if (@Feedback.Product != null)
                         {
                             <p><span class="glyphicon glyphicon-shopping-cart"></span> @Feedback.Product.Name</p>
-                        }                      
+                        }
                     </div>
                 </div>
             </div>
         }
-    </div>    
+    </div>
 </div>

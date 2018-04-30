@@ -11,13 +11,13 @@ using WebApp.Models;
 
 namespace WebApp.Services.Background.OnInit
 {
-    public class ResourceInitService : IHostedService
+    public class ResourcesService : IHostedService
     {
         private readonly IServiceProvider _provider;
         private ResourceContext _instance;
         public IConfiguration _configuration { get; }
 
-        public ResourceInitService(IServiceProvider serviceProvider, IConfiguration configuration)
+        public ResourcesService(IServiceProvider serviceProvider, IConfiguration configuration)
         {
             _provider = serviceProvider;
             _instance = ResourceContext.GetInstance();

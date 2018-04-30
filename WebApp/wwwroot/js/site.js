@@ -47,11 +47,17 @@ $(document).ready(function() {
         loader.hide();
    
     });
-
-
     $(".nav a").on("click", function(){
         $(".nav").find(".active").removeClass("active");
         $(this).parent().addClass("active");
         });
 
     });
+
+function slowScroll(id) {
+    var offset = 0;
+    $('html,body').animate({
+        scrollTop: $(id).offset().top - offset
+    }, 500);
+    return false;
+}

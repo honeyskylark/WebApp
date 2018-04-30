@@ -3,10 +3,9 @@
 @{
     ViewBag.Title = Model.Name;
 }
-<br />
-<div class="container">
+<div class="container crud-container">
     <ol class="breadcrumb">
-        <li><a asp-area="" asp-action="Index" asp-controller="Home">@ResourceProvider.GetResource("Home")</a></li>
+        <li><a asp-area="eCore" asp-action="Index" asp-controller="Deals">@ResourceProvider.GetResource("Deals")</a></li>
         <li><a asp-area="eCore" asp-action="Index" asp-controller="Companies">@ResourceProvider.GetResource("Companies")</a></li>
         <li class="active">@ViewBag.Title</li>
     </ol>
@@ -19,14 +18,21 @@
                         <th scope="row">@ResourceProvider.GetResource("Company") </th>
                         <td>@Model.Name</td>
                     </tr>                  
+                    @if(@Model.Phone != null)
+                    {
                     <tr>
                         <th scope="row">@ResourceProvider.GetResource("Phone") </th>
                         <td>@Model.Phone</td>
                     </tr>
+                    }
+                    @if(@Model.Address != null)
+                    { 
+                        
                     <tr>
                         <th scope="row">@ResourceProvider.GetResource("Address") </th>
                         <td>@Model.Address</td>
                     </tr>
+                    }                
                 </tbody>
             </table>
         </div>

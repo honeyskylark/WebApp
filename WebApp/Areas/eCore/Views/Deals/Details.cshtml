@@ -3,10 +3,8 @@
 @{
     ViewBag.Title = Model.Product.Name;
 }
-<br />
-<div class="container">
+<div class="container crud-container">
     <ol class="breadcrumb">
-        <li><a asp-area="" asp-action="Index" asp-controller="Home">@ResourceProvider.GetResource("Home")</a></li>
         <li><a asp-area="eCore" asp-action="Index" asp-controller="Deals">@ResourceProvider.GetResource("Deals")</a></li>
         <li class="active">@ViewBag.Title</li>
     </ol>
@@ -15,14 +13,20 @@
             <div class="panel-heading"><span class="glyphicon glyphicon-eye-open"></span> @ResourceProvider.GetResource("ExtendedInfo")</div>
             <table class="table">
                 <tbody>
+                    @if(Model.Title != null)
+                    {
                     <tr>
                         <th scope="row">@ResourceProvider.GetResource("Title")</th>
                         <td>@Model.Title</td>
                     </tr>
+                    }
+                     @if(Model.Description != null)
+                     {
                     <tr>
                         <th scope="row">@ResourceProvider.GetResource("Description")</th>
                         <td>@Model.Description</td>
                     </tr>
+                     }                  
                     <tr>
                         <th scope="row">@ResourceProvider.GetResource("Process")</th>
                         <td>@Model.Process.Title</td>

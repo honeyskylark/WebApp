@@ -12,14 +12,23 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/landing.css" />
+    <link rel="stylesheet" href="~/css/animate.css" />
     <script src="~/js/site.js"></script>
+    <script src="~/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
 </head>
 <body>
-    @RenderBody()      
+    <div id="page-preloader" class="preloader">
+        <div class="loader"></div>
+    </div>
+    @RenderBody()
     <section id="footer">
         <div class="container">
             <p>© 2018 Компания «Пиломир». Все права защищены | Design by <a href="https://github.com/honeyskylark">Asylgareev Rustam</a></p>
         </div>
     </section>
+    <script src="~/js/loader.js"></script>
 </body>
 </html>
