@@ -30,10 +30,17 @@
                         <th scope="row">@ResourceProvider.GetResource("Message") </th>
                         <td>@Model.Message</td>
                     </tr>
+                    @if(Model.Product != null)
+                    {
                     <tr>
-                        <th scope="row">@ResourceProvider.GetResource("Product") </th>
-                        <td>@Model.Product.Name</td>
+                        <th scope="row">@ResourceProvider.GetResource("Product")</th>
+                        <td>
+                            <p><b>@ResourceProvider.GetResource("Catalog")</b> @Model.Product.Catalog.Name</p>
+                            <p><b>@ResourceProvider.GetResource("Product")</b> @Model.Product.Name</p>
+                            <p><b>@ResourceProvider.GetResource("Price")</b> @Model.Product.Price @Model.Product.Currency.Name \ @Model.Product.Unit.Name</p>
+                        </td>
                     </tr>
+                    }  
                 </tbody>
             </table>
         </div>

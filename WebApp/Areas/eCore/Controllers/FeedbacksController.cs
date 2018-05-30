@@ -143,6 +143,9 @@ namespace WebApp.Areas.eCore.Controllers
 
             var feedback = await _context.Feedbacks
                 .Include(f => f.Product)
+                .Include(f => f.Product.Catalog)
+                .Include(d => d.Product.Currency)
+                .Include(d => d.Product.Unit)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (feedback == null)
             {
@@ -158,7 +161,12 @@ namespace WebApp.Areas.eCore.Controllers
         [Authorize(Roles = "Administrator, Employee")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var feedback = await _context.Feedbacks.SingleOrDefaultAsync(m => m.Id == id);
+            var feedback = await _context.Feedbacks
+              .Include(f => f.Product)
+              .Include(f => f.Product.Catalog)
+              .Include(d => d.Product.Currency)
+              .Include(d => d.Product.Unit)
+              .SingleOrDefaultAsync(m => m.Id == id);
             _context.Feedbacks.Remove(feedback);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
